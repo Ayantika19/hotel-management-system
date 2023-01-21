@@ -1,0 +1,40 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.0'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id 'java'
+}
+
+group = 'com.hotel.management'
+version = '0.0.1'
+sourceCompatibility = '11.0.11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation ('org.springframework.boot:spring-boot-starter-web:2.7.0') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation ("org.springframework.boot:spring-boot-starter-test':2.7.0")
+    implementation("org.apache.logging.log4j:log4j-api:2.17.2")
+    implementation("org.apache.logging.log4j:log4j-core:2.17.2")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.17.2")
+    implementation ("mysql:mysql-connector-java:8.0.31")
+    implementation ("javax.persistence:javax.persistence-api:2.2")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.1:sources")
+    implementation ("org.springframework.boot:spring-boot-starter-data-jpa:2.7.0")
+}
+
+test {
+    useJUnitPlatform()
+}
+
