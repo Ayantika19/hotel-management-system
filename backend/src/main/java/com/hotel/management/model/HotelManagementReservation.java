@@ -6,29 +6,30 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.JoinColumn;
 // import javax.swing.JFrame;
 // import javax.swing.JPanel;
 
+import java.sql.Timestamp;
 import java.util.Date;
-
 import java.io.Serializable;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 // import java.awt.image.BufferedImage;
 
 @Entity
 @Table(name = "Reservation")
-public class HotelManagementReservation implements Serializable {
+public class HotelManagementReservation {
     @Id
     @GeneratedValue
     private long bookingId;   
     
-    // @Id
-    @Column(name="GuestID")
-    private long guestId;
-
-    @OneToOne(mappedBy = "hotelManagementReservation")
+    @OneToOne
+    @JoinColumn(name="GuestID",referencedColumnName="GuestID")
     private HotelManagementGuestRegistration hotelManagementGuestRegistration;
 
     @Column(name="HotelID")
@@ -55,29 +56,29 @@ public class HotelManagementReservation implements Serializable {
     // @Column(name="IdentificationProof")
     // private BufferedImage identificationProof;
 
-    // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    // @Column(name="ToDate")
-    // private Date toDate;
+    @Temporal(TemporalType.DATE)
+    @Column(name="ToDate")
+    private Date toDate;
 
-    // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    // @Column(name="FromDate")
-    // private Date fromDate;
+    @Temporal(TemporalType.DATE)
+    @Column(name="FromDate")
+    private Date fromDate;
 
-    // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    // @Column(name="creationDate")
-    // private Date creationDate;
+    @CreationTimestamp
+    @Column(name="creationDate")
+    private Timestamp creationDate;
 
-    // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    // @Column(name="lastUpdated")
-    // private Date lastUpdated;
+    @UpdateTimestamp
+    @Column(name="lastUpdated")
+    private Timestamp lastUpdated;
 
     public HotelManagementReservation() {
 
     }
 
-    public HotelManagementReservation(long guestId, long hotelId, long roomId, long discountId, String locationName, String guestAddress, 
-                                        String bookingStatus, double roomCharges) {
-        this.guestId=guestId;
+    public HotelManagementReservation(long hotelId, long roomId, long discountId, String locationName, String guestAddress, 
+                                        String bookingStatus, double roomCharges, Date toDate, Date fromDate) {
+        // this.guestId=guestId;
         this.hotelId=hotelId;
         this.roomId=roomId;
         this.discountId=discountId;
@@ -86,10 +87,8 @@ public class HotelManagementReservation implements Serializable {
         this.bookingStatus=bookingStatus;
         this.roomCharges=roomCharges;
         // this.identificationProof=identificationProof;
-        // this.toDate=toDate;
-        // this.fromDate=fromDate;                                   
-        // this.creationDate=creationDate;
-        // this.lastUpdated=lastUpdated;
+        this.toDate=toDate;
+        this.fromDate=fromDate;                                   
     }
     
     public HotelManagementGuestRegistration getHotelManagementGuestRegistration() {
@@ -140,29 +139,29 @@ public class HotelManagementReservation implements Serializable {
     //     return identificationProof;
     // }
 
-    // public Date getToDate() {
-    //     return toDate;
-    // }
+    public Date getToDate() {
+        return toDate;
+    }
 
-    // public Date getFromDate() {
-    //     return fromDate;
-    // }
+    public Date getFromDate() {
+        return fromDate;
+    }
 
-    // public Date getcreationDate() {
-    //     return creationDate;
-    // }
+    public Timestamp getcreationDate() {
+        return creationDate;
+    }
     
-    // public Date getlastUpdated() {
-    //     return lastUpdated;
-    // }
+    public Timestamp getlastUpdated() {
+        return lastUpdated;
+    }
 
-    // public void setcreationDate(Date creationDate) {
-    //     this.creationDate=creationDate;
-    // }
+    public void setcreationDate(Timestamp creationDate) {
+        this.creationDate=creationDate;
+    }
     
-    // public void setlastUpdated(Date lastUpdated) {
-    //     this.lastUpdated=lastUpdated;
-    // }
+    public void setlastUpdated(Timestamp lastUpdated) {
+        this.lastUpdated=lastUpdated;
+    }
     
     public void setHotelId(long hotelId) {
         this.hotelId=hotelId;
@@ -196,21 +195,21 @@ public class HotelManagementReservation implements Serializable {
     //     this.identificationProof=identificationProof;
     // }
 
-    // public void setToDate(Date toDate) {
-    //     this.toDate=toDate;
-    // }
+    public void setToDate(Date toDate) {
+        this.toDate=toDate;
+    }
 
-    // public void setFromDate(Date fromDate) {
-    //     this.fromDate=fromDate;
-    // }
+    public void setFromDate(Date fromDate) {
+        this.fromDate=fromDate;
+    }
 
     @Override
     public String toString() {
-	    return "Reservation [bookingId=" + bookingId + ", guestId=" + guestId + ", hotelId=" + hotelId + 
+	    return "Reservation [bookingId=" + bookingId +  ", hotelId=" + hotelId + 
                             ", roomId=" + roomId + ", discountId=" + discountId + ", locationName=" + locationName +
                             ", guestAddress=" + guestAddress + ", bookingStatus=" + bookingStatus + 
-                            ", roomCharges=" + roomCharges + "]";
+                            ", roomCharges=" + roomCharges + 
                             //", identificationProof=" + identificationProof + 
-                            //", toDate=" + toDate + ", fromDate=" + fromDate + ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + 
+                            ", toDate=" + toDate + ", fromDate=" + fromDate + ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
     }
 }

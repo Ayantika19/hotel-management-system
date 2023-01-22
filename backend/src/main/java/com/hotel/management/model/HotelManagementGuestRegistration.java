@@ -9,9 +9,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.CascadeType;
 import javax.persistence.JoinColumn;
 
-import com.fasterxml.jackson.annotation.JsonFormat; 
-
+import java.sql.Timestamp;
 import java.util.Date;
+import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "Guest")
@@ -19,11 +22,7 @@ public class HotelManagementGuestRegistration {
     @Id
     @GeneratedValue
     @Column(name="GuestID")
-    private long guestId;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "GuestID", referencedColumnName = "GuestID")
-    private HotelManagementReservation hotelManagementReservation;    
+    private long guestId;  
 
     @Column(name="FirstName")
     private String firstName;
@@ -37,13 +36,13 @@ public class HotelManagementGuestRegistration {
     @Column(name="Password")
     private char[] password;
 
-    // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    // @Column(name="creationDate")
-    // private Date creationDate;
+    @CreationTimestamp
+    @Column(name="creationDate")
+    private Timestamp creationDate;
 
-    // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    // @Column(name="lastUpdated")
-    // private Date lastUpdated;
+    @UpdateTimestamp
+    @Column(name="lastUpdated")
+    private Timestamp lastUpdated;
 
     public HotelManagementGuestRegistration() {
 
@@ -56,14 +55,6 @@ public class HotelManagementGuestRegistration {
         this.password=password;
         // this.creationDate=creationDate;
         // this.lastUpdated=lastUpdated;
-    }
-
-    public HotelManagementReservation getHotelManagementReservation() {
-        return hotelManagementReservation;
-    }
-
-    public void setHotelManagementReservation(HotelManagementReservation hotelManagementReservation) {
-        this.hotelManagementReservation=hotelManagementReservation;
     }
 
     public long getGuestId() {
@@ -86,21 +77,21 @@ public class HotelManagementGuestRegistration {
         return password;
     }
 
-    // public Date getcreationDate() {
-    //     return creationDate;
-    // }
+    public Timestamp getcreationDate() {
+        return creationDate;
+    }
     
-    // public Date getlastUpdated() {
-    //     return lastUpdated;
-    // }
+    public Timestamp getlastUpdated() {
+        return lastUpdated;
+    }
 
-    // public void setcreationDate(Date creationDate) {
-    //     this.creationDate=creationDate;
-    // }
+    public void setcreationDate(Timestamp creationDate) {
+        this.creationDate=creationDate;
+    }
     
-    // public void setlastUpdated(Date lastUpdated) {
-    //     this.lastUpdated=lastUpdated;
-    // }
+    public void setlastUpdated(Timestamp lastUpdated) {
+        this.lastUpdated=lastUpdated;
+    }
 
     public void setFirstName(String firstName) {
         this.firstName=firstName;
