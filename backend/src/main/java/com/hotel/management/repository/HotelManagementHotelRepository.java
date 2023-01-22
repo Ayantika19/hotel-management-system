@@ -1,12 +1,12 @@
-package com.hotel.management.repository;
+// package com.hotel.management.repository;
 
-import java.util.List;
+// import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.hotel.management.model.HotelManagementLocation;
+// import com.hotel.management.model.HotelManagementLocation;
 
-public interface HotelManagementHotelRepository extends JpaRepository<HotelManagementLocation,Long> {
-    List<HotelManagementLocation> getAllLocationNames();
-    List<HotelManagementLocation> addNewLocation(HotelManagementLocation locationName);
-}
+// public interface HotelManagementHotelRepository extends JpaRepository<HotelManagementLocation,Long> {
+//     List<HotelManagementLocation> getAllLocationNames();
+//     List<HotelManagementLocation> addNewLocation(HotelManagementLocation locationName);
+// }
