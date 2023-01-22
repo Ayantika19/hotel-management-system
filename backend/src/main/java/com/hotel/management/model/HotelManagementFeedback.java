@@ -64,7 +64,7 @@ public class HotelManagementFeedback {
         return feedbackId;
     }
 
-    public long getHotelID() {
+    public long getHotelId() {
         return hotelID;
     }
 

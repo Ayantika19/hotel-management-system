@@ -24,14 +24,11 @@ dependencies {
     }
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation ("org.springframework.boot:spring-boot-starter-test':2.7.0")
-    implementation("org.apache.logging.log4j:log4j-api:2.17.2")
-    implementation("org.apache.logging.log4j:log4j-core:2.17.2")
-    implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.17.2")
-    implementation ("mysql:mysql-connector-java:8.0.31")
+    implementation("mysql:mysql-connector-java:8.0.31")
     implementation ("javax.persistence:javax.persistence-api:2.2")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.1:sources")
-    implementation ("org.springframework.boot:spring-boot-starter-data-jpa:2.7.0")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.7.0")
+    testImplementation ("org.springframework.boot:spring-boot-starter-test':2.7.0")
 }
 
 test {

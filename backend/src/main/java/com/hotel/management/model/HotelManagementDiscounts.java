@@ -64,15 +64,15 @@ public class HotelManagementDiscounts {
         return registrationId;
     }
 
-    public long getDiscountID() {
+    public long getDiscountId() {
         return discountId;
     }
 
-    public long getHotelID() {
+    public long getHotelId() {
         return hotelID;
     }
 
-    public long getLocationID() {
+    public long getLocationId() {
         return locationID;
     }
 

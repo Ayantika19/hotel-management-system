@@ -57,7 +57,9 @@ public class HotelManagementHotelFacilities {
 
     }
 
-    public HotelManagementHotelFacilities(long locationId, boolean gymAvailable, boolean swimmingPoolAvailable, boolean parkingZoneAvailable, int totalRooms, int roomsAvailable, boolean carRentAvailable, boolean gameZoneAvailable, boolean laundryAvailable, Date creationDate, Date lastUpdated) {
+    public HotelManagementHotelFacilities(long locationId, boolean gymAvailable, boolean swimmingPoolAvailable, boolean parkingZoneAvailable, 
+                                          int totalRooms, int roomsAvailable, boolean carRentAvailable, boolean gameZoneAvailable, 
+                                          boolean laundryAvailable, Date creationDate, Date lastUpdated) {
         this.locationId=locationId;
         this.gymAvailable=gymAvailable;
         this.swimmingPoolAvailable=swimmingPoolAvailable;
@@ -71,11 +73,11 @@ public class HotelManagementHotelFacilities {
         this.lastUpdated=lastUpdated;
     }
 
-    public long getHotelID() {
+    public long getHotelId() {
         return hotelId;
     }
 
-    public long getLocationID() {
+    public long getLocationId() {
         return locationId;
     }
 
