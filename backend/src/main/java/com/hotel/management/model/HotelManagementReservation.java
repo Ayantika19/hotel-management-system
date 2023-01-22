@@ -5,24 +5,31 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.persistence.OneToOne;
+// import javax.swing.JFrame;
+// import javax.swing.JPanel;
 
 import java.util.Date;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import java.awt.image.BufferedImage;
+// import java.awt.image.BufferedImage;
 
 @Entity
 @Table(name = "Reservation")
-public class HotelManagementReservation {
+public class HotelManagementReservation implements Serializable {
     @Id
     @GeneratedValue
     private long bookingId;   
     
+    // @Id
     @Column(name="GuestID")
     private long guestId;
+
+    @OneToOne(mappedBy = "hotelManagementReservation")
+    private HotelManagementGuestRegistration hotelManagementGuestRegistration;
 
     @Column(name="HotelID")
     private long hotelId;
@@ -45,32 +52,32 @@ public class HotelManagementReservation {
     @Column(name="RoomCharges")
     private double roomCharges;
 
-    @Column(name="IdentificationProof")
-    private BufferedImage identificationProof;
+    // @Column(name="IdentificationProof")
+    // private BufferedImage identificationProof;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    @Column(name="ToDate")
-    private Date toDate;
+    // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+    // @Column(name="ToDate")
+    // private Date toDate;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    @Column(name="FromDate")
-    private Date fromDate;
+    // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+    // @Column(name="FromDate")
+    // private Date fromDate;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    @Column(name="creationDate")
-    private Date creationDate;
+    // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+    // @Column(name="creationDate")
+    // private Date creationDate;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    @Column(name="lastUpdated")
-    private Date lastUpdated;
+    // @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+    // @Column(name="lastUpdated")
+    // private Date lastUpdated;
 
     public HotelManagementReservation() {
 
     }
 
-    public HotelManagementReservation(long hotelId, long roomId, long discountId, String locationName, String guestAddress, 
-                                        String bookingStatus, double roomCharges, BufferedImage identificationProof,
-                                        Date toDate, Date fromDate, Date creationDate, Date lastUpdated) {
+    public HotelManagementReservation(long guestId, long hotelId, long roomId, long discountId, String locationName, String guestAddress, 
+                                        String bookingStatus, double roomCharges) {
+        this.guestId=guestId;
         this.hotelId=hotelId;
         this.roomId=roomId;
         this.discountId=discountId;
@@ -78,20 +85,28 @@ public class HotelManagementReservation {
         this.guestAddress=guestAddress;
         this.bookingStatus=bookingStatus;
         this.roomCharges=roomCharges;
-        this.identificationProof=identificationProof;
-        this.toDate=toDate;
-        this.fromDate=fromDate;                                   
-        this.creationDate=creationDate;
-        this.lastUpdated=lastUpdated;
+        // this.identificationProof=identificationProof;
+        // this.toDate=toDate;
+        // this.fromDate=fromDate;                                   
+        // this.creationDate=creationDate;
+        // this.lastUpdated=lastUpdated;
     }
     
+    public HotelManagementGuestRegistration getHotelManagementGuestRegistration() {
+        return hotelManagementGuestRegistration;
+    }
+
+    public void setHotelManagementGuestRegistration(HotelManagementGuestRegistration hotelManagementGuestRegistration) {
+        this.hotelManagementGuestRegistration=hotelManagementGuestRegistration;
+    }
+
     public long getBookingId() {
         return bookingId;
     }
 
-    public long getGuestId() {
-        return guestId;
-    }
+    // public long getGuestId() {
+    //     return guestId;
+    // }
 
     public long getHotelId() {
         return hotelId;
@@ -121,33 +136,33 @@ public class HotelManagementReservation {
         return roomCharges;
     }
 
-    public BufferedImage getIdentificationProof() {
-        return identificationProof;
-    }
+    // public BufferedImage getIdentificationProof() {
+    //     return identificationProof;
+    // }
 
-    public Date getToDate() {
-        return toDate;
-    }
+    // public Date getToDate() {
+    //     return toDate;
+    // }
 
-    public Date getFromDate() {
-        return fromDate;
-    }
+    // public Date getFromDate() {
+    //     return fromDate;
+    // }
 
-    public Date getcreationDate() {
-        return creationDate;
-    }
+    // public Date getcreationDate() {
+    //     return creationDate;
+    // }
     
-    public Date getlastUpdated() {
-        return lastUpdated;
-    }
+    // public Date getlastUpdated() {
+    //     return lastUpdated;
+    // }
 
-    public void setcreationDate(Date creationDate) {
-        this.creationDate=creationDate;
-    }
+    // public void setcreationDate(Date creationDate) {
+    //     this.creationDate=creationDate;
+    // }
     
-    public void setlastUpdated(Date lastUpdated) {
-        this.lastUpdated=lastUpdated;
-    }
+    // public void setlastUpdated(Date lastUpdated) {
+    //     this.lastUpdated=lastUpdated;
+    // }
     
     public void setHotelId(long hotelId) {
         this.hotelId=hotelId;
@@ -177,24 +192,25 @@ public class HotelManagementReservation {
         this.roomCharges=roomCharges;
     }
 
-    public void setIdentificationProof(BufferedImage identificationProof) {
-        this.identificationProof=identificationProof;
-    }
+    // public void setIdentificationProof(BufferedImage identificationProof) {
+    //     this.identificationProof=identificationProof;
+    // }
 
-    public void setToDate(Date toDate) {
-        this.toDate=toDate;
-    }
+    // public void setToDate(Date toDate) {
+    //     this.toDate=toDate;
+    // }
 
-    public void setFromDate(Date fromDate) {
-        this.fromDate=fromDate;
-    }
+    // public void setFromDate(Date fromDate) {
+    //     this.fromDate=fromDate;
+    // }
 
     @Override
     public String toString() {
 	    return "Reservation [bookingId=" + bookingId + ", guestId=" + guestId + ", hotelId=" + hotelId + 
                             ", roomId=" + roomId + ", discountId=" + discountId + ", locationName=" + locationName +
                             ", guestAddress=" + guestAddress + ", bookingStatus=" + bookingStatus + 
-                            ", roomCharges=" + roomCharges + ", identificationProof=" + identificationProof + 
-                            ", toDate=" + toDate + ", fromDate=" + fromDate + ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
+                            ", roomCharges=" + roomCharges + "]";
+                            //", identificationProof=" + identificationProof + 
+                            //", toDate=" + toDate + ", fromDate=" + fromDate + ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + 
     }
 }
