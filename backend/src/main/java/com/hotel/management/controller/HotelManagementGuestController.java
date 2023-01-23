@@ -1,3 +1,4 @@
-public class HotelManagementGuestController {
+// package com.hotel.management.controller;
+// public class HotelManagementGuestController {
     
-}
+// }

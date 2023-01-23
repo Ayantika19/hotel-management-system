@@ -5,48 +5,57 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.EntityListeners;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name = "Rooms")
+@Table(name = "rooms")
+@EntityListeners(AuditingEntityListener.class)
 public class HotelManagementRooms {
     @Id
     @GeneratedValue
+    @Column(name="roomid")
     private long roomId;
 
-    @Column(name="RoomNumber")
+    @Column(name="roomnumber")
     private int roomNumber;
 
-    @Column(name="HotelId")
-    private long hotelId;
+    @OneToOne   //need to change
+    @JoinColumn(name="hotelid",referencedColumnName="hotelid")
+    private HotelManagementHotelFacilities hotelManagementHotelFacilities;
 
-    @Column(name="RoomType")
+    @Column(name="roomtype")
     private String roomType;
 
-    @Column(name="RoomCharges")
+    @Column(name="roomcharges")
     private double roomCharges;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    @Column(name="creationDate")
+    @CreatedDate
+    @Column(name="creationdate")
     private Date creationDate;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    @Column(name="lastUpdated")
+    @LastModifiedDate
+    @Column(name="lastupdated")
     private Date lastUpdated;
 
     public HotelManagementRooms() {
 
     }
 
-    public HotelManagementRooms(int roomNumber, long hotelId, String roomType, double roomCharges) {
+    public HotelManagementRooms(int roomNumber, String roomType, double roomCharges) {
         this.roomNumber=roomNumber;
-        this.hotelId=hotelId;
         this.roomType=roomType;
         this.roomCharges=roomCharges;
     }   
+
+    
 
     public long getRoomId() {
         return roomId;
@@ -56,9 +65,6 @@ public class HotelManagementRooms {
         return roomNumber;
     }
 
-    public long getHotelId() {
-        return hotelId;
-    }
 
     public String getRoomType() {
         return roomType;
@@ -80,10 +86,6 @@ public class HotelManagementRooms {
         this.roomNumber=roomNumber;
     }
 
-    public void setHotelId(long hotelId) {
-        this.hotelId=hotelId;
-    }
-
     public void setRoomType(String roomType) {
         this.roomType=roomType;
     }
@@ -102,6 +104,6 @@ public class HotelManagementRooms {
 
     @Override
     public String toString() {
-        return "Rooms [roomId=" + roomId + ", roomNumber=" + roomNumber + ", hotelId=" + hotelId + ", roomType=" + roomType + ", roomCharges=" + roomCharges + ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated +"]";
+        return "Rooms [roomId=" + roomId + ", roomNumber=" + roomNumber + ", roomType=" + roomType + ", roomCharges=" + roomCharges + ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated +"]";
     }
 }

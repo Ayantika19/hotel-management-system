@@ -5,39 +5,41 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
+import javax.persistence.EntityListeners;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name = "Location")
+@Table(name = "location")
+@EntityListeners(AuditingEntityListener.class)
 public class HotelManagementLocation {
+    
     @Id
     @GeneratedValue
-    private long locationId;
+    @Column(name="locationid")
+    private Long locationId;
 
-    @Column(name="LocationName")
+    @Column(name="locationname")
     private String locationName;
 
-    @Column(name="HotelId")
-    private long hotelId;
-
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    @Column(name="creationDate")
+    @CreatedDate
+    @Column(name="creationdate")
     private Date creationDate;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    @Column(name="lastUpdated")
+    @LastModifiedDate
+    @Column(name="lastupdated")
     private Date lastUpdated;
 
     public HotelManagementLocation() {
 
     }
 
-    public HotelManagementLocation(String locationName, long hotelId, Date creationDate, Date lastUpdated) {
+    public HotelManagementLocation(String locationName,Date creationDate, Date lastUpdated) {
         this.locationName=locationName;
-        this.hotelId=hotelId;
         this.creationDate=creationDate;
         this.lastUpdated=lastUpdated;
     }
@@ -50,20 +52,12 @@ public class HotelManagementLocation {
         return locationName;
     }
 
-    public long getHotelId() {
-        return hotelId;
-    }
-
     public Date getcreationDate() {
         return creationDate;
     }   
 
     public Date getlastUpdated() {
         return lastUpdated;
-    }
-
-    public void setHotelId(long hotelId) {
-        this.hotelId=hotelId;
     }
 
     public void setcreationDate(Date creationDate) {
@@ -80,7 +74,7 @@ public class HotelManagementLocation {
 
     @Override
     public String toString() {
-	    return "Location [hotelID=" + hotelId + ", locationId=" + locationId + ", locationName=" + locationName + ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
+	    return "Location [locationId=" + locationId + ", locationName=" + locationName + ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
     }
 }
 

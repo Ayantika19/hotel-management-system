@@ -5,44 +5,42 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
-import javax.persistence.OneToOne;
-import javax.persistence.CascadeType;
-import javax.persistence.JoinColumn;
+import javax.persistence.EntityListeners;
 
-import java.sql.Timestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import java.util.Date;
-import java.io.Serializable;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name = "Guest")
+@Table(name = "guest")
+@EntityListeners(AuditingEntityListener.class)
 public class HotelManagementGuestRegistration {
     @Id
     @GeneratedValue
-    @Column(name="GuestID")
+    @Column(name="guestid")
     private long guestId;  
 
-    @Column(name="FirstName")
+    @Column(name="firstname")
     private String firstName;
 
-    @Column(name="LastName")
+    @Column(name="lastname")
     private String lastName;
 
-    @Column(name="EmailID")
+    @Column(name="emailid")
     private String emailID;
 
-    @Column(name="Password")
+    @Column(name="password")
     private char[] password;
 
-    @CreationTimestamp
-    @Column(name="creationDate")
-    private Timestamp creationDate;
+    @CreatedDate
+    @Column(name="creationdate")
+    private Date creationDate;
 
-    @UpdateTimestamp
-    @Column(name="lastUpdated")
-    private Timestamp lastUpdated;
+    @LastModifiedDate
+    @Column(name="lastupdated")
+    private Date lastUpdated;
 
     public HotelManagementGuestRegistration() {
 
@@ -53,19 +51,17 @@ public class HotelManagementGuestRegistration {
         this.lastName=lastName;
         this.emailID=emailID;
         this.password=password;
-        // this.creationDate=creationDate;
-        // this.lastUpdated=lastUpdated;
     }
 
     public long getGuestId() {
         return guestId;
     }
 
-    public String getFirstName () {
+    public String getfirstname () {
         return firstName;
     }
 
-    public String getLastName() {
+    public String getlastname() {
         return lastName;
     }
 
@@ -77,27 +73,27 @@ public class HotelManagementGuestRegistration {
         return password;
     }
 
-    public Timestamp getcreationDate() {
+    public Date getcreationDate() {
         return creationDate;
     }
     
-    public Timestamp getlastUpdated() {
+    public Date getlastUpdated() {
         return lastUpdated;
     }
 
-    public void setcreationDate(Timestamp creationDate) {
+    public void setcreationDate(Date creationDate) {
         this.creationDate=creationDate;
     }
     
-    public void setlastUpdated(Timestamp lastUpdated) {
+    public void setlastUpdated(Date lastUpdated) {
         this.lastUpdated=lastUpdated;
     }
 
-    public void setFirstName(String firstName) {
+    public void setfirstname(String firstName) {
         this.firstName=firstName;
     }
 
-    public void setLastName(String lastName) {
+    public void setlastname(String lastName) {
         this.lastName=lastName;
     }
 
@@ -112,8 +108,8 @@ public class HotelManagementGuestRegistration {
     @Override
     public String toString() {
 	    return "Guest[guestId=" + guestId + ", firstName=" + firstName + 
-                          ", lastName=" + lastName + ", emailID=" + emailID + ", password=" + password + "]"; 
-                        //   ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + 
+                          ", lastName=" + lastName + ", emailID=" + emailID + ", password=" + password +  
+                           ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
     }
 }    
 

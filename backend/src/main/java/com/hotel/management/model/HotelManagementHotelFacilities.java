@@ -4,63 +4,71 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
+import javax.persistence.JoinColumn;
+import javax.persistence.EntityListeners;
+import javax.persistence.Column;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name = "HotelFacilities")
+@Table(name = "hotel")
+@EntityListeners(AuditingEntityListener.class)
 public class HotelManagementHotelFacilities {
+    
     @Id
     @GeneratedValue
-    private long hotelId;
+    @Column(name="hotelid")
+    private Long hotelId;
 
-    @Column(name="LocationID")
-    private long locationId;
+    @OneToOne   //need to change
+    @JoinColumn(name="locationid",referencedColumnName="locationid")
+    private HotelManagementLocation hotelManagementLocation;
 
-    @Column(name="Gym")
+    @Column(name="gym")
     private boolean gymAvailable;
 
-    @Column(name="SwimmingPool")
+    @Column(name="swimmingpool")
     private boolean swimmingPoolAvailable;
     
-    @Column(name="ParkingZone")
+    @Column(name="parkingzone")
     private boolean parkingZoneAvailable;
 
-    @Column(name="TotalRooms")
+    @Column(name="totalrooms")
     private int totalRooms;
 
-    @Column(name="RoomsAvailable")
+    @Column(name="roomsavailable")
     private int roomsAvailable;
 
-    @Column(name="CarRent")
+    @Column(name="carrent")
     private boolean carRentAvailable;
 
-    @Column(name="GameZone")
+    @Column(name="gamezone")
     private boolean gameZoneAvailable;
 
-    @Column(name="Laundry")
+    @Column(name="laundry")
     private boolean laundryAvailable;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    @Column(name="creationDate")
+    @CreatedDate
+    @Column(name="creationdate")
     private Date creationDate;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    @Column(name="lastUpdated")
+    @LastModifiedDate
+    @Column(name="lastupdated")
     private Date lastUpdated;
 
     public HotelManagementHotelFacilities() {
 
     }
 
-    public HotelManagementHotelFacilities(long locationId, boolean gymAvailable, boolean swimmingPoolAvailable, boolean parkingZoneAvailable, 
+    public HotelManagementHotelFacilities(boolean gymAvailable, boolean swimmingPoolAvailable, boolean parkingZoneAvailable, 
                                           int totalRooms, int roomsAvailable, boolean carRentAvailable, boolean gameZoneAvailable, 
                                           boolean laundryAvailable, Date creationDate, Date lastUpdated) {
-        this.locationId=locationId;
         this.gymAvailable=gymAvailable;
         this.swimmingPoolAvailable=swimmingPoolAvailable;
         this.parkingZoneAvailable=parkingZoneAvailable;
@@ -72,13 +80,17 @@ public class HotelManagementHotelFacilities {
         this.creationDate=creationDate;
         this.lastUpdated=lastUpdated;
     }
+    
+    public HotelManagementLocation getHotelManagementLocation() {
+        return hotelManagementLocation;
+    }
+
+    public void setHotelManagementLocation(HotelManagementLocation hotelManagementLocation) {
+        this.hotelManagementLocation=hotelManagementLocation;
+    }
 
     public long getHotelId() {
         return hotelId;
-    }
-
-    public long getLocationId() {
-        return locationId;
     }
 
     public boolean getGymAvailable() {
@@ -129,14 +141,6 @@ public class HotelManagementHotelFacilities {
         this.lastUpdated=lastUpdated;
     }
 
-    public void setLocationID(long locationId) {
-        this.locationId=locationId;
-    }
-
-    public void setHotelID(long hotelID) {
-        this.hotelId=hotelId;
-    }
-
     public void setGymAvailable(boolean gymAvailable) {
         this.gymAvailable=gymAvailable;
     }
@@ -171,6 +175,6 @@ public class HotelManagementHotelFacilities {
 
     @Override
     public String toString() {
-	    return "HotelFacilities [hotelId=" + hotelId + ", locationId=" + locationId + ", gymAvailable=" + gymAvailable + ", swimmingPoolAvailable=" + swimmingPoolAvailable + ", parkingZoneAvailable=" + parkingZoneAvailable + ", carRentAvailable=" + carRentAvailable + ", gameZoneAvailable=" + gameZoneAvailable + ", laundryAvailable=" + laundryAvailable + ", totalRooms=" + totalRooms + ", roomsAvailable=" + roomsAvailable + ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
+	    return "HotelFacilities [hotelId=" + hotelId + ", gymAvailable=" + gymAvailable + ", swimmingPoolAvailable=" + swimmingPoolAvailable + ", parkingZoneAvailable=" + parkingZoneAvailable + ", carRentAvailable=" + carRentAvailable + ", gameZoneAvailable=" + gameZoneAvailable + ", laundryAvailable=" + laundryAvailable + ", totalRooms=" + totalRooms + ", roomsAvailable=" + roomsAvailable + ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
     }   
 }

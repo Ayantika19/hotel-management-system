@@ -6,89 +6,86 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
 import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.JoinColumn;
-// import javax.swing.JFrame;
-// import javax.swing.JPanel;
+import javax.persistence.EntityListeners;
+import javax.persistence.Lob;
 
-import java.sql.Timestamp;
 import java.util.Date;
-import java.io.Serializable;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
-// import java.awt.image.BufferedImage;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name = "Reservation")
+@Table(name = "reservation")
+@EntityListeners(AuditingEntityListener.class)
 public class HotelManagementReservation {
+    
     @Id
     @GeneratedValue
+    @Column(name="bookingid")
     private long bookingId;   
     
     @OneToOne
-    @JoinColumn(name="GuestID",referencedColumnName="GuestID")
+    @JoinColumn(name="guestid",referencedColumnName="guestid")
     private HotelManagementGuestRegistration hotelManagementGuestRegistration;
 
-    @Column(name="HotelID")
-    private long hotelId;
+    @OneToOne
+    @JoinColumn(name="hotelid",referencedColumnName="hotelid")
+    private HotelManagementHotelFacilities hotelManagementHotelFacilities;
 
-    @Column(name="RoomID")
-    private long roomId;
+    @ManyToOne
+    @JoinColumn(name="roomid",referencedColumnName="roomid")
+    private HotelManagementRooms hotelManagementRooms;
 
-    @Column(name="DiscountID")
-    private long discountId;
+    @OneToOne
+    @JoinColumn(name="discountid",referencedColumnName="discountid")
+    private HotelManagementDiscounts hotelManagementDiscounts;
 
-    @Column(name="LocationName")
+    @Column(name="locationname")
     private String locationName;
 
-    @Column(name="Address")
+    @Column(name="address")
     private String guestAddress;
 
-    @Column(name="BookingStatus")
+    @Column(name="bookingstatus")
     private String bookingStatus;
 
-    @Column(name="RoomCharges")
-    private double roomCharges;
-
-    // @Column(name="IdentificationProof")
-    // private BufferedImage identificationProof;
+    @Lob 
+	@Column(name = "identityproof", columnDefinition="BLOB") 
+	private byte[] identityProof;
 
     @Temporal(TemporalType.DATE)
-    @Column(name="ToDate")
+    @Column(name="todate")
     private Date toDate;
 
     @Temporal(TemporalType.DATE)
-    @Column(name="FromDate")
+    @Column(name="fromdate")
     private Date fromDate;
 
-    @CreationTimestamp
-    @Column(name="creationDate")
-    private Timestamp creationDate;
+    @CreatedDate
+    @Column(name="creationdate")
+    private Date creationDate;
 
-    @UpdateTimestamp
-    @Column(name="lastUpdated")
-    private Timestamp lastUpdated;
+    @LastModifiedDate
+    @Column(name="lastupdated")
+    private Date lastUpdated;
 
     public HotelManagementReservation() {
 
     }
 
-    public HotelManagementReservation(long hotelId, long roomId, long discountId, String locationName, String guestAddress, 
-                                        String bookingStatus, double roomCharges, Date toDate, Date fromDate) {
-        // this.guestId=guestId;
-        this.hotelId=hotelId;
-        this.roomId=roomId;
-        this.discountId=discountId;
+    public HotelManagementReservation(String locationName, String guestAddress, String bookingStatus, Date toDate, Date fromDate, byte[] identityProof) {
+        
         this.locationName=locationName;
         this.guestAddress=guestAddress;
         this.bookingStatus=bookingStatus;
-        this.roomCharges=roomCharges;
-        // this.identificationProof=identificationProof;
         this.toDate=toDate;
-        this.fromDate=fromDate;                                   
+        this.fromDate=fromDate;
+        this.identityProof=identityProof;                                   
     }
     
     public HotelManagementGuestRegistration getHotelManagementGuestRegistration() {
@@ -99,24 +96,32 @@ public class HotelManagementReservation {
         this.hotelManagementGuestRegistration=hotelManagementGuestRegistration;
     }
 
+    public HotelManagementHotelFacilities getHotelManagementHotelFacilities() {
+        return hotelManagementHotelFacilities;
+    }
+
+    public void setHotelManagementHotelFacilities(HotelManagementHotelFacilities hotelManagementHotelFacilities) {
+        this.hotelManagementHotelFacilities=hotelManagementHotelFacilities;
+    }
+
+    public HotelManagementRooms getHotelManagementRooms() {
+        return hotelManagementRooms;
+    }
+
+    public void setHotelManagementRooms(HotelManagementRooms hotelManagementRooms) {
+        this.hotelManagementRooms=hotelManagementRooms;
+    }
+
+    public HotelManagementDiscounts hotelManagementDiscounts(HotelManagementDiscounts hotelManagementDiscounts) {
+        return hotelManagementDiscounts;
+    }
+
+    public void HotelManagementDiscounts(HotelManagementDiscounts hotelManagementDiscounts) {
+        this.hotelManagementDiscounts=hotelManagementDiscounts;
+    }
+
     public long getBookingId() {
         return bookingId;
-    }
-
-    // public long getGuestId() {
-    //     return guestId;
-    // }
-
-    public long getHotelId() {
-        return hotelId;
-    }
-
-    public long getRoomId() {
-        return roomId;
-    }
-
-    public long getDiscountId() {
-        return discountId;
     }
 
     public String getLocationName() {
@@ -131,13 +136,9 @@ public class HotelManagementReservation {
         return bookingStatus;
     }
 
-    public double getRoomCharges() {
-        return roomCharges;
+    public byte[] getIdentityProof() {
+        return identityProof;
     }
-
-    // public BufferedImage getIdentificationProof() {
-    //     return identificationProof;
-    // }
 
     public Date getToDate() {
         return toDate;
@@ -147,34 +148,22 @@ public class HotelManagementReservation {
         return fromDate;
     }
 
-    public Timestamp getcreationDate() {
+    public Date getcreationDate() {
         return creationDate;
     }
     
-    public Timestamp getlastUpdated() {
+    public Date getlastUpdated() {
         return lastUpdated;
     }
 
-    public void setcreationDate(Timestamp creationDate) {
+    public void setcreationDate(Date creationDate) {
         this.creationDate=creationDate;
     }
     
-    public void setlastUpdated(Timestamp lastUpdated) {
+    public void setlastUpdated(Date lastUpdated) {
         this.lastUpdated=lastUpdated;
     }
     
-    public void setHotelId(long hotelId) {
-        this.hotelId=hotelId;
-    }
-
-    public void setRoomId(long roomId) {
-        this.roomId=roomId;
-    }
-
-    public void setDiscountId(long discountId) {
-        this.discountId=discountId;
-    }
-
     public void setLocationName(String locationName) {
         this.locationName=locationName;
     }
@@ -187,13 +176,9 @@ public class HotelManagementReservation {
         this.bookingStatus=bookingStatus;
     }
 
-    public void setRoomCharges(double roomCharges) {
-        this.roomCharges=roomCharges;
+    public void setIdentityProof(byte[] identityProof) {
+        this.identityProof=identityProof;
     }
-
-    // public void setIdentificationProof(BufferedImage identificationProof) {
-    //     this.identificationProof=identificationProof;
-    // }
 
     public void setToDate(Date toDate) {
         this.toDate=toDate;
@@ -205,10 +190,8 @@ public class HotelManagementReservation {
 
     @Override
     public String toString() {
-	    return "Reservation [bookingId=" + bookingId +  ", hotelId=" + hotelId + 
-                            ", roomId=" + roomId + ", discountId=" + discountId + ", locationName=" + locationName +
+	    return "Reservation [bookingId=" + bookingId +  ", locationName=" + locationName +
                             ", guestAddress=" + guestAddress + ", bookingStatus=" + bookingStatus + 
-                            ", roomCharges=" + roomCharges + 
                             //", identificationProof=" + identificationProof + 
                             ", toDate=" + toDate + ", fromDate=" + fromDate + ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
     }

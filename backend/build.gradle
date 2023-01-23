@@ -1,6 +1,5 @@
 plugins {
     id 'org.springframework.boot' version '2.7.0'
-    id 'io.spring.dependency-management' version '1.1.0'
     id 'java'
 }
 
@@ -22,13 +21,16 @@ dependencies {
     implementation ('org.springframework.boot:spring-boot-starter-web:2.7.0') {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
+    implementation("org.springframework.boot:spring-boot-starter-parent:2.7.0")
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
     implementation("mysql:mysql-connector-java:8.0.31")
     implementation ("javax.persistence:javax.persistence-api:2.2")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.1:sources")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.7.0")
-    testImplementation ("org.springframework.boot:spring-boot-starter-test':2.7.0")
+    implementation("org.hibernate:hibernate-core:5.6.9.Final")
+    implementation("org.hibernate.common:hibernate-commons-annotations:5.1.2.Final:sources")
+    implementation("org.hibernate:hibernate-core:5.6.9.Final:sources")
+    implementation("org.hibernate:hibernate-entitymanager:5.6.9.Final:sources")
 }
 
 test {

@@ -1,183 +1,173 @@
-// package com.hotel.management.model;
+package com.hotel.management.model;
 
-// import javax.persistence.Entity;
-// import javax.persistence.Table;
-// import javax.persistence.Id;
-// import javax.persistence.GeneratedValue;
-// import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Column;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.JoinColumn;
+import javax.persistence.EntityListeners;
 
-// import java.util.Date;
+import java.util.Date;
 
-// import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-// @Entity
-// @Table(name = "Employee")
-// public class HotelManagementEmployeeRegistration {
-//     @Id
-//     @GeneratedValue
-//     private long registrationId;
+@Entity
+@Table(name = "employee")
+@EntityListeners(AuditingEntityListener.class)
+public class HotelManagementEmployeeRegistration {
 
-//     @Id
-//     @GeneratedValue
-//     private long employeeId;
+    @Id
+    @GeneratedValue
+    @Column(name="employeeid")
+    private long employeeId;
 
-//     @Column(name="LocationID")
-//     private long locationId;
+    @OneToOne   //need to change
+    @JoinColumn(name="hotelid",referencedColumnName="hotelid")
+    private HotelManagementHotelFacilities hotelManagementHotelFacilities;
 
-//     @Column(name="HotelID")
-//     private long hotelId;
+    @Column(name="firstname")
+    private String firstName;
 
-//     @Column(name="FirstName")
-//     private String firstName;
+    @Column(name="lastname")
+    private String lastName;
 
-//     @Column(name="LastName")
-//     private String lastName;
+    @Column(name="emailid")
+    private String emailID;
 
-//     @Column(name="EmailID")
-//     private String emailID;
+    @Column(name="password")
+    private char[] password;
 
-//     @Column(name="Password")
-//     private char[] password;
+    @Column(name="contactnumber")
+    private int employeeContactNumber;
 
-//     @Column(name="ContactNumber")
-//     private int employeeContactNumber;
+    @Column(name="address")
+    private String employeeAddress;
 
-//     @Column(name="Address")
-//     private String employeeAddress;
+    @Temporal(TemporalType.DATE)
+    @Column(name="dob")
+    private Date dateOfBirth;
 
-//     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-//     @Column(name="DOB")
-//     private Date dateOfBirth;
+    @CreatedDate
+    @Column(name="creationdate")
+    private Date creationDate;
 
-//     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-//     @Column(name="creationDate")
-//     private Date creationDate;
-
-//     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-//     @Column(name="lastUpdated")
-//     private Date lastUpdated;
-
-//     public HotelManagementEmployeeRegistration() {
-
-//     }
-
-//     public HotelManagementEmployeeRegistration(long locationId, long hotelId, String firstName, String lastName, String emailID,
-//                                                 char[] password, int employeeContactNumber, String employeeAddress, Date dateOfBirth, 
-//                                                 Date creationDate, Date lastUpdated) {
-//         this.locationId=locationId;
-//         this.hotelId=hotelId;
-//         this.firstName=firstName;
-//         this.lastName=lastName;
-//         this.emailID=emailID;
-//         this.password=password;
-//         this.employeeContactNumber=employeeContactNumber;
-//         this.employeeAddress=employeeAddress;
-//         this.dateOfBirth=dateOfBirth;
-//         this.creationDate=creationDate;
-//         this.lastUpdated=lastUpdated;
-//     }
+    @LastModifiedDate
+    @Column(name="lastupdated")
+    private Date lastUpdated;
     
-//     public long getRegistrationId() {
-//         return registrationId;
-//     }
+    public HotelManagementEmployeeRegistration() {
 
-//     public long getEmployeeId() {
-//         return employeeId;
-//     }
+    }
 
-//     public long getLocationId() {
-//         return locationId;
-//     }
-
-//     public long getHotelId() {
-//         return hotelId;
-//     }
-
-//     public String getFirstName () {
-//         return firstName;
-//     }
-
-//     public String getLastName() {
-//         return lastName;
-//     }
-
-//     public String getEmailID() {
-//         return emailID;
-//     }
-
-//     public char[] getPassword() {
-//         return password;
-//     }
-
-//     public int getEmployeeContactNumber() {
-//         return employeeContactNumber;
-//     }
-
-//     public String getEmployeeAddress() {
-//         return employeeAddress;
-//     }
-
-//     public Date getEmployeeDOB() {
-//         return dateOfBirth;
-//     }
-
-//     public Date getcreationDate() {
-//         return creationDate;
-//     }
+    public HotelManagementEmployeeRegistration(String firstName, String lastName, String emailID,
+                                                char[] password, int employeeContactNumber, String employeeAddress, Date dateOfBirth, 
+                                                Date creationDate, Date lastUpdated) {
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.emailID=emailID;
+        this.password=password;
+        this.employeeContactNumber=employeeContactNumber;
+        this.employeeAddress=employeeAddress;
+        this.dateOfBirth=dateOfBirth;
+        this.creationDate=creationDate;
+        this.lastUpdated=lastUpdated;
+    }
     
-//     public Date getlastUpdated() {
-//         return lastUpdated;
-//     }
+    public HotelManagementHotelFacilities getHotelManagementHotelFacilities() {
+        return hotelManagementHotelFacilities;
+    }
 
-//     public void setcreationDate(Date creationDate) {
-//         this.creationDate=creationDate;
-//     }
+    public void setHotelManagementHotelFacilities(HotelManagementHotelFacilities hotelManagementHotelFacilities) {
+        this.hotelManagementHotelFacilities=hotelManagementHotelFacilities;
+    }
+
+    public long getEmployeeId() {
+        return employeeId;
+    }
+
+    public String getfirstname () {
+        return firstName;
+    }
+
+    public String getlastname() {
+        return lastName;
+    }
+
+    public String getEmailID() {
+        return emailID;
+    }
+
+    public char[] getPassword() {
+        return password;
+    }
+
+    public int getEmployeeContactNumber() {
+        return employeeContactNumber;
+    }
+
+    public String getEmployeeAddress() {
+        return employeeAddress;
+    }
+
+    public Date getEmployeeDOB() {
+        return dateOfBirth;
+    }
+
+    public Date getcreationDate() {
+        return creationDate;
+    }
     
-//     public void setlastUpdated(Date lastUpdated) {
-//         this.lastUpdated=lastUpdated;
-//     }
+    public Date getlastUpdated() {
+        return lastUpdated;
+    }
 
-//     public void setLocationId(long locationId) {
-//         this.locationId=locationId;
-//     }
+    public void setcreationDate(Date creationDate) {
+        this.creationDate=creationDate;
+    }
+    
+    public void setlastUpdated(Date lastUpdated) {
+        this.lastUpdated=lastUpdated;
+    }
 
-//     public void setHotelId(long hotelId) {
-//         this.hotelId=hotelId;
-//     }
+    public void setfirstname(String firstName) {
+        this.firstName=firstName;
+    }
 
-//     public void setFirstName(String firstName) {
-//         this.firstName=firstName;
-//     }
+    public void setlastname(String lastName) {
+        this.lastName=lastName;
+    }
 
-//     public void setLastName(String lastName) {
-//         this.lastName=lastName;
-//     }
+    public void setEmailID(String emailID) {
+        this.emailID=emailID;
+    }
 
-//     public void setEmailID(String emailID) {
-//         this.emailID=emailID;
-//     }
+    public void setPassword(char[] password) {
+        this.password=password;
+    }
 
-//     public void setPassword(char[] password) {
-//         this.password=password;
-//     }
+    public void setEmployeeContactNumber(int employeeContactNumber) {
+        this.employeeContactNumber=employeeContactNumber;
+    }
 
-//     public void setEmployeeContactNumber(int employeeContactNumber) {
-//         this.employeeContactNumber=employeeContactNumber;
-//     }
+    public void setemployeeAddress(String employeeAddress) {
+        this.employeeAddress=employeeAddress;
+    }
 
-//     public void setemployeeAddress(String employeeAddress) {
-//         this.employeeAddress=employeeAddress;
-//     }
+    public void setDOB(Date dateOfBirth) {
+        this.dateOfBirth=dateOfBirth;
+    }
 
-//     public void setDOB(Date dateOfBirth) {
-//         this.dateOfBirth=dateOfBirth;
-//     }
-
-//     @Override
-//     public String toString() {
-// 	    return "Employee [registrationId=" + registrationId + ", employeeId=" + employeeId + ", locationId=" + locationId + ", hotelId=" + hotelId + 
-//                           ", firstName=" + firstName + ", lastName=" + lastName + ", emailID=" + emailID + ", password=" + password + 
-//                           ", contactNumber=" + employeeContactNumber + ", address=" + employeeAddress + ", DOB=" + dateOfBirth + 
-//                           ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
-//     }    
-// }
+    @Override
+    public String toString() {
+	    return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName + ", emailID=" + emailID + ", password=" + password + 
+                          ", contactNumber=" + employeeContactNumber + ", address=" + employeeAddress + ", DOB=" + dateOfBirth + 
+                          ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
+    }    
+}

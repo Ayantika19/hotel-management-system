@@ -4,31 +4,46 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
+import javax.persistence.JoinColumn;
+import javax.persistence.EntityListeners;
 import javax.persistence.Column;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name = "Items")
+@Table(name = "items")
+@EntityListeners(AuditingEntityListener.class)
 public class HotelManagementItems {
     @Id
     @GeneratedValue
+    @Column(name="itemid")
     private long itemId;
 
-    @Column(name="ItemName")
+    //need to change
+    @OneToMany
+    @ManyToOne
+    @JoinColumn(name="hotelid",referencedColumnName="hotelid")
+    private HotelManagementHotelFacilities hotelManagementHotelFacilities; 
+
+    @Column(name="itemname")
     private String itemName;
 
     @Column(name="charges")
     private double charges;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    @Column(name="creationDate")
+    @CreatedDate
+    @Column(name="creationdate")
     private Date creationDate;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    @Column(name="lastUpdated")
+    @LastModifiedDate
+    @Column(name="lastupdated")
     private Date lastUpdated;
 
     public HotelManagementItems() {
@@ -40,6 +55,14 @@ public class HotelManagementItems {
         this.charges=charges;
         this.creationDate=creationDate;
         this.lastUpdated=lastUpdated;
+    }
+
+    public HotelManagementHotelFacilities getHotelManagementHotelFacilities() {
+        return hotelManagementHotelFacilities;
+    }
+
+    public void setHotelManagementHotelFacilities(HotelManagementHotelFacilities hotelManagementHotelFacilities) {
+        this.hotelManagementHotelFacilities=hotelManagementHotelFacilities;
     }
     
     public long getItemId() {

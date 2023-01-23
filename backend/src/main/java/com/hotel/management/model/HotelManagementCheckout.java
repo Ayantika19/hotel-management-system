@@ -5,33 +5,52 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.EntityListeners;
+import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 @Entity
-@Table(name = "Checkout")
+@Table(name = "checkout")
+@EntityListeners(AuditingEntityListener.class)
 public class HotelManagementCheckout {
     @Id
     @GeneratedValue
+    @Column(name="billingid")
     private long billingId;
 
-    @Column(name="PaymentStatus")
+    @OneToOne
+    @JoinColumn(name="bookingid",referencedColumnName="bookingid")
+    private HotelManagementReservation hotelManagementReservation;
+
+    @OneToMany
+    @ManyToOne
+    @JoinColumn(name="itemid",referencedColumnName="itemid")
+    private HotelManagementItems hotelManagementItems;
+
+    @Column(name="paymentstatus")
     private String paymentStatus;
 
-    @Column(name="GST")
+    @Column(name="gst")
     private double gst;
 
-    @Column(name="TotalCharges")
+    @Column(name="totalcharges")
     private double totalCharges;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    @Column(name="creationDate")
+    @CreatedDate
+    @Column(name="creationdate")
     private Date creationDate;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    @Column(name="lastUpdated")
+    @LastModifiedDate
+    @Column(name="lastupdated")
     private Date lastUpdated;
 
     public HotelManagementCheckout() {
@@ -42,6 +61,22 @@ public class HotelManagementCheckout {
         this.paymentStatus=paymentStatus;
         this.gst=gst;
         this.totalCharges=totalCharges;
+    }
+
+    public HotelManagementReservation getHotelManagementReservation() {
+        return hotelManagementReservation;
+    }
+
+    public void setHotelManagementReservation(HotelManagementReservation hotelManagementReservation) {
+        this.hotelManagementReservation=hotelManagementReservation;
+    }
+
+    public HotelManagementItems getHotelManagementItems() {
+        return hotelManagementItems;
+    }
+
+    public void setHotelManagementItems(HotelManagementItems hotelManagementItems) {
+        this.hotelManagementItems=hotelManagementItems;
     }
     
     public long getBillingId() {
@@ -90,6 +125,7 @@ public class HotelManagementCheckout {
 
     @Override
     public String toString() {
-	    return "Checkout [billingId=" + billingId + ", paymentStatus=" + paymentStatus + ", gst=" + gst + ", totalCharges=" + totalCharges + ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
+	    return "Checkout [billingId=" + billingId + ", paymentStatus=" + paymentStatus + ", gst=" + gst + 
+                        ", totalCharges=" + totalCharges + ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
     }    
 }

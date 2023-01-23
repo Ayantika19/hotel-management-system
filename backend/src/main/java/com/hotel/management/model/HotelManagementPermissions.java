@@ -5,49 +5,49 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.EntityListeners;
+import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 @Entity
-@Table(name = "Permissions")
+@Table(name = "permissions")
+@EntityListeners(AuditingEntityListener.class)
 public class HotelManagementPermissions {
     @Id
     @GeneratedValue
-    private long permissionID;
+    @Column(name="permissionid")
+    private long permissionId;
 
-    @Column(name="roleID")
-    private long roleID;
-
-    @Column(name="permissionModule")
+    @Column(name="permissionmodule")
     private String permissionModule;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    @Column(name="creationDate")
+    @CreatedDate
+    @Column(name="creationdate")
     private Date creationDate;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-    @Column(name="lastUpdated")
+    @LastModifiedDate
+    @Column(name="lastupdated")
     private Date lastUpdated;
 
     public HotelManagementPermissions() {
 
     }
 
-    public HotelManagementPermissions(long roleID, String permissionModule, Date creationDate, Date lastUpdated) {
-        this.roleID=roleID;
+    public HotelManagementPermissions(String permissionModule, Date creationDate, Date lastUpdated) {
         this.permissionModule=permissionModule;
         this.creationDate=creationDate;
         this.lastUpdated=lastUpdated;
     }
 
-    public long getPermissionID(long permissionID) {
-        return permissionID;
-    }
-
-    public long getRoleID(long roleID) {
-        return roleID;
+    public long getPermissionID(long permissionId) {
+        return permissionId;
     }
 
     public String getPermissionModule(String permissionModule) {
@@ -74,12 +74,8 @@ public class HotelManagementPermissions {
         this.permissionModule=permissionModule;
     }
 
-    public void setRoleID(long roleID) {
-        this.roleID=roleID;
-    }
-
     @Override
     public String toString() {
-	    return "Permissions [permissionID=" + permissionID + "roleID=" + roleID + ", permissionModule=" + permissionModule + ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
+	    return "Permissions [permissionId=" + permissionId + ", permissionModule=" + permissionModule + ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
     }
 }
