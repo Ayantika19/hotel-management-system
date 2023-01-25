@@ -26,10 +26,10 @@ public class HotelManagementFeedback {
     private long feedbackId;
 
     @OneToOne
-    @JoinColumn(name="bookingid",referencedColumnName="bookingid")
+    @JoinColumn(name="bookingid",referencedColumnName="bookingid", nullable = false)
     private HotelManagementReservation hotelManagementReservation;
 
-    @Column(name="ratings")
+    @Column(name="ratings", nullable = false)
     private double ratings;
 
     @CreatedDate
@@ -37,7 +37,7 @@ public class HotelManagementFeedback {
     private Date creationDate;
 
     @LastModifiedDate
-    @Column(name="lastupdated")
+    @Column(name="lastupdated", nullable = false)
     private Date lastUpdated;
 
     public HotelManagementFeedback() {

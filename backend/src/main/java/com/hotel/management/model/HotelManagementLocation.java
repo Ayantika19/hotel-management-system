@@ -3,6 +3,8 @@ package com.hotel.management.model;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
@@ -23,7 +25,11 @@ public class HotelManagementLocation {
     @Column(name="locationid")
     private Long locationId;
 
-    @Column(name="locationname")
+    @ManyToOne
+    @JoinColumn(name = "hotelid", referencedColumnName = "hotelid", nullable = false)
+    private HotelManagementHotelFacilities hotelManagementHotelFacilities;
+
+    @Column(name="locationname", nullable = false)
     private String locationName;
 
     @CreatedDate
@@ -31,7 +37,7 @@ public class HotelManagementLocation {
     private Date creationDate;
 
     @LastModifiedDate
-    @Column(name="lastupdated")
+    @Column(name="lastupdated", nullable = false)
     private Date lastUpdated;
 
     public HotelManagementLocation() {
@@ -46,6 +52,14 @@ public class HotelManagementLocation {
 
     public long getLocationId() {
         return locationId;
+    }
+
+    public HotelManagementHotelFacilities getHotelManagementHotelFacilities() {
+        return hotelManagementHotelFacilities;
+    }
+
+    public void setHotelManagementHotelFacilities(HotelManagementHotelFacilities hotelManagementHotelFacilities) {
+        this.hotelManagementHotelFacilities = hotelManagementHotelFacilities;
     }
 
     public String getLocationName() {

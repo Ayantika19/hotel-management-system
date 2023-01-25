@@ -7,9 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.JoinColumn;
 import javax.persistence.EntityListeners;
 import javax.persistence.Column;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import java.util.Date;
 
@@ -26,16 +24,18 @@ public class HotelManagementItems {
     @Column(name="itemid")
     private long itemId;
 
-    //need to change
-    @OneToMany
     @ManyToOne
-    @JoinColumn(name="hotelid",referencedColumnName="hotelid")
+    @JoinColumn(name="hotelid",referencedColumnName="hotelid", nullable = false)
     private HotelManagementHotelFacilities hotelManagementHotelFacilities; 
 
-    @Column(name="itemname")
+    @ManyToOne
+    @JoinColumn(name="billingid")
+    private HotelManagementCheckout hotelManagementCheckout;
+
+    @Column(name="itemname", nullable = false)
     private String itemName;
 
-    @Column(name="charges")
+    @Column(name="charges", nullable = false)
     private double charges;
 
     @CreatedDate
@@ -43,7 +43,7 @@ public class HotelManagementItems {
     private Date creationDate;
 
     @LastModifiedDate
-    @Column(name="lastupdated")
+    @Column(name="lastupdated", nullable = false)
     private Date lastUpdated;
 
     public HotelManagementItems() {
@@ -57,6 +57,10 @@ public class HotelManagementItems {
         this.lastUpdated=lastUpdated;
     }
 
+    public HotelManagementCheckout getHotelManagementCheckout() {
+        return hotelManagementCheckout;
+    }
+    
     public HotelManagementHotelFacilities getHotelManagementHotelFacilities() {
         return hotelManagementHotelFacilities;
     }

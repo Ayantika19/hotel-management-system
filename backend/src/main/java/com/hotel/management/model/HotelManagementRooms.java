@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.EntityListeners;
 
@@ -27,14 +29,18 @@ public class HotelManagementRooms {
     @Column(name="roomnumber")
     private int roomNumber;
 
-    @OneToOne   //need to change
-    @JoinColumn(name="hotelid",referencedColumnName="hotelid")
+    @ManyToOne
+    @JoinColumn(name="hotelid", referencedColumnName="hotelid", nullable = false)
     private HotelManagementHotelFacilities hotelManagementHotelFacilities;
 
-    @Column(name="roomtype")
+    @ManyToOne
+    @JoinColumn(name = "bookingid", referencedColumnName="bookingid")
+    private HotelManagementReservation hotelManagementReservation;
+
+    @Column(name="roomtype", nullable = false)
     private String roomType;
 
-    @Column(name="roomcharges")
+    @Column(name="roomcharges", nullable = false)
     private double roomCharges;
 
     @CreatedDate
@@ -42,7 +48,7 @@ public class HotelManagementRooms {
     private Date creationDate;
 
     @LastModifiedDate
-    @Column(name="lastupdated")
+    @Column(name="lastupdated", nullable = false)
     private Date lastUpdated;
 
     public HotelManagementRooms() {
@@ -55,8 +61,6 @@ public class HotelManagementRooms {
         this.roomCharges=roomCharges;
     }   
 
-    
-
     public long getRoomId() {
         return roomId;
     }
@@ -64,7 +68,6 @@ public class HotelManagementRooms {
     public int getRoomNumber() {
         return roomNumber;
     }
-
 
     public String getRoomType() {
         return roomType;
@@ -80,6 +83,14 @@ public class HotelManagementRooms {
     
     public Date getlastUpdated() {
         return lastUpdated;
+    }
+    
+    public HotelManagementReservation getHotelManagementReservation() {
+        return hotelManagementReservation;
+    }
+
+    public void setHotelManagementReservation(HotelManagementReservation hotelManagementReservation) {
+        this.hotelManagementReservation = hotelManagementReservation;
     }
 
     public void setRoomNumber(int roomNumber) {

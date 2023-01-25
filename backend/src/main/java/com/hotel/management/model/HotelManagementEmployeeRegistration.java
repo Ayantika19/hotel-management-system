@@ -5,11 +5,10 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.EntityListeners;
 
 import java.util.Date;
@@ -28,23 +27,23 @@ public class HotelManagementEmployeeRegistration {
     @Column(name="employeeid")
     private long employeeId;
 
-    @OneToOne   //need to change
-    @JoinColumn(name="hotelid",referencedColumnName="hotelid")
+    @ManyToOne
+    @JoinColumn(name="hotelid",referencedColumnName="hotelid", nullable = false)
     private HotelManagementHotelFacilities hotelManagementHotelFacilities;
 
-    @Column(name="firstname")
+    @Column(name="firstname", nullable = false)
     private String firstName;
 
-    @Column(name="lastname")
+    @Column(name="lastname", nullable = false)
     private String lastName;
 
-    @Column(name="emailid")
+    @Column(name="emailid", nullable = false)
     private String emailID;
 
-    @Column(name="password")
+    @Column(name="password", nullable = false)
     private char[] password;
 
-    @Column(name="contactnumber")
+    @Column(name="contactnumber", nullable = false)
     private int employeeContactNumber;
 
     @Column(name="address")
@@ -59,7 +58,7 @@ public class HotelManagementEmployeeRegistration {
     private Date creationDate;
 
     @LastModifiedDate
-    @Column(name="lastupdated")
+    @Column(name="lastupdated", nullable = false)
     private Date lastUpdated;
     
     public HotelManagementEmployeeRegistration() {
@@ -166,7 +165,7 @@ public class HotelManagementEmployeeRegistration {
 
     @Override
     public String toString() {
-	    return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName + ", emailID=" + emailID + ", password=" + password + 
+	    return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName + ", emailID=" + emailID + ", password=" + password.toString() + 
                           ", contactNumber=" + employeeContactNumber + ", address=" + employeeAddress + ", DOB=" + dateOfBirth + 
                           ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
     }    

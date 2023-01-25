@@ -22,16 +22,16 @@ public class HotelManagementGuestRegistration {
     @Column(name="guestid")
     private long guestId;  
 
-    @Column(name="firstname")
+    @Column(name="firstname", nullable = false)
     private String firstName;
 
-    @Column(name="lastname")
+    @Column(name="lastname", nullable = false)
     private String lastName;
 
-    @Column(name="emailid")
+    @Column(name="emailid", nullable = false)
     private String emailID;
 
-    @Column(name="password")
+    @Column(name="password", nullable = false)
     private char[] password;
 
     @CreatedDate
@@ -39,7 +39,7 @@ public class HotelManagementGuestRegistration {
     private Date creationDate;
 
     @LastModifiedDate
-    @Column(name="lastupdated")
+    @Column(name="lastupdated", nullable = false)
     private Date lastUpdated;
 
     public HotelManagementGuestRegistration() {
@@ -107,9 +107,9 @@ public class HotelManagementGuestRegistration {
 
     @Override
     public String toString() {
-	    return "Guest[guestId=" + guestId + ", firstName=" + firstName + 
-                          ", lastName=" + lastName + ", emailID=" + emailID + ", password=" + password +  
-                           ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
+	    return "Guest[guestId=" + guestId + ", firstName=" + firstName + ", lastName=" + lastName + 
+                        ", emailID=" + emailID + ", password=" + password.toString() +  
+                        ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
     }
 }    
 

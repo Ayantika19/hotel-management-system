@@ -8,6 +8,7 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.OneToOne;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.JoinColumn;
@@ -16,6 +17,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Lob;
 
 import java.util.Date;
+import java.util.Set;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -32,16 +34,15 @@ public class HotelManagementReservation {
     private long bookingId;   
     
     @OneToOne
-    @JoinColumn(name="guestid",referencedColumnName="guestid")
+    @JoinColumn(name="guestid",referencedColumnName="guestid", nullable = false)
     private HotelManagementGuestRegistration hotelManagementGuestRegistration;
 
-    @OneToOne
-    @JoinColumn(name="hotelid",referencedColumnName="hotelid")
+    @ManyToOne
+    @JoinColumn(name="hotelid",referencedColumnName="hotelid", nullable = false)
     private HotelManagementHotelFacilities hotelManagementHotelFacilities;
 
-    @ManyToOne
-    @JoinColumn(name="roomid",referencedColumnName="roomid")
-    private HotelManagementRooms hotelManagementRooms;
+    @OneToMany(mappedBy = "hotelManagementReservation")
+    private Set<HotelManagementRooms> hotelManagementRooms;
 
     @OneToOne
     @JoinColumn(name="discountid",referencedColumnName="discountid")
@@ -50,7 +51,7 @@ public class HotelManagementReservation {
     @Column(name="locationname")
     private String locationName;
 
-    @Column(name="address")
+    @Column(name="address", nullable = false)
     private String guestAddress;
 
     @Column(name="bookingstatus")
@@ -73,7 +74,7 @@ public class HotelManagementReservation {
     private Date creationDate;
 
     @LastModifiedDate
-    @Column(name="lastupdated")
+    @Column(name="lastupdated", nullable = false)
     private Date lastUpdated;
 
     public HotelManagementReservation() {
@@ -106,12 +107,8 @@ public class HotelManagementReservation {
         this.hotelManagementHotelFacilities=hotelManagementHotelFacilities;
     }
 
-    public HotelManagementRooms getHotelManagementRooms() {
-        return hotelManagementRooms;
-    }
-
-    public void setHotelManagementRooms(HotelManagementRooms hotelManagementRooms) {
-        this.hotelManagementRooms=hotelManagementRooms;
+    public void setHotelManagementRooms(Set<HotelManagementRooms> hotelManagementRooms) {
+        this.hotelManagementRooms = hotelManagementRooms;
     }
 
     public HotelManagementDiscounts hotelManagementDiscounts(HotelManagementDiscounts hotelManagementDiscounts) {
@@ -194,7 +191,7 @@ public class HotelManagementReservation {
     public String toString() {
 	    return "Reservation [bookingId=" + bookingId +  ", locationName=" + locationName +
                             ", guestAddress=" + guestAddress + ", bookingStatus=" + bookingStatus + 
-                            //", identificationProof=" + identificationProof + 
+                            ", identityProof=" + identityProof + 
                             ", toDate=" + toDate + ", fromDate=" + fromDate + ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
     }
 }

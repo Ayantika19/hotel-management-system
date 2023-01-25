@@ -4,13 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
-import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.EntityListeners;
 import javax.persistence.Column;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import java.util.Date;
+import java.util.Set;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -26,9 +25,8 @@ public class HotelManagementHotelFacilities {
     @Column(name="hotelid")
     private Long hotelId;
 
-    @OneToOne   //need to change
-    @JoinColumn(name="locationid",referencedColumnName="locationid")
-    private HotelManagementLocation hotelManagementLocation;
+    @OneToMany(mappedBy = "hotelManagementHotelFacilities")
+    private Set<HotelManagementLocation> hotelManagementLocation;
 
     @Column(name="gym")
     private boolean gymAvailable;
@@ -39,10 +37,10 @@ public class HotelManagementHotelFacilities {
     @Column(name="parkingzone")
     private boolean parkingZoneAvailable;
 
-    @Column(name="totalrooms")
+    @Column(name="totalrooms", nullable = false)
     private int totalRooms;
 
-    @Column(name="roomsavailable")
+    @Column(name="roomsavailable", nullable = false)
     private int roomsAvailable;
 
     @Column(name="carrent")
@@ -59,7 +57,7 @@ public class HotelManagementHotelFacilities {
     private Date creationDate;
 
     @LastModifiedDate
-    @Column(name="lastupdated")
+    @Column(name="lastupdated", nullable = false)
     private Date lastUpdated;
 
     public HotelManagementHotelFacilities() {
@@ -81,11 +79,11 @@ public class HotelManagementHotelFacilities {
         this.lastUpdated=lastUpdated;
     }
     
-    public HotelManagementLocation getHotelManagementLocation() {
+    public Set<HotelManagementLocation> getHotelManagementLocation() {
         return hotelManagementLocation;
     }
 
-    public void setHotelManagementLocation(HotelManagementLocation hotelManagementLocation) {
+    public void setHotelManagementLocation(Set<HotelManagementLocation> hotelManagementLocation) {
         this.hotelManagementLocation=hotelManagementLocation;
     }
 

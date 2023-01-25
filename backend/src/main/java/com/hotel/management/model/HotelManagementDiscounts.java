@@ -5,9 +5,7 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
 
 import java.util.Date;
@@ -28,13 +26,11 @@ public class HotelManagementDiscounts {
     @Column(name="discountid")
     private long discountId;
 
-    //need to change
-    @OneToMany
     @ManyToOne
-    @JoinColumn(name="hotelid",referencedColumnName="hotelid")
+    @JoinColumn(name="hotelid",referencedColumnName="hotelid", nullable = false)
     private HotelManagementHotelFacilities hotelManagementHotelFacilities;
 
-    @Column(name="companyname")
+    @Column(name="companyname", nullable = false)
     private String companyName;
 
     @Column(name="companyaddress")
@@ -43,7 +39,7 @@ public class HotelManagementDiscounts {
     @Column(name="emailid")
     private String emailID;
 
-    @Column(name="contactnumber")
+    @Column(name="contactnumber", nullable = false)
     private int contactNumber;
 
     @CreatedDate
@@ -51,7 +47,7 @@ public class HotelManagementDiscounts {
     private Date creationDate;
 
     @LastModifiedDate
-    @Column(name="lastupdated")
+    @Column(name="lastupdated", nullable = false)
     private Date lastUpdated;
 
     public HotelManagementDiscounts() {

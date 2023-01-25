@@ -8,8 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.EntityListeners;
 import javax.persistence.OneToOne;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.springframework.data.annotation.CreatedDate;
@@ -17,6 +15,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.Date;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "checkout")
@@ -26,23 +26,21 @@ public class HotelManagementCheckout {
     @GeneratedValue
     @Column(name="billingid")
     private long billingId;
+    
+    @OneToMany(mappedBy="hotelManagementCheckout")
+    private Set<HotelManagementItems> hotelManagementItems;
 
     @OneToOne
-    @JoinColumn(name="bookingid",referencedColumnName="bookingid")
+    @JoinColumn(name="bookingid",referencedColumnName="bookingid", nullable = false)
     private HotelManagementReservation hotelManagementReservation;
 
-    @OneToMany
-    @ManyToOne
-    @JoinColumn(name="itemid",referencedColumnName="itemid")
-    private HotelManagementItems hotelManagementItems;
-
-    @Column(name="paymentstatus")
+    @Column(name="paymentstatus", nullable = false)
     private String paymentStatus;
 
-    @Column(name="gst")
+    @Column(name="gst", nullable = false)
     private double gst;
 
-    @Column(name="totalcharges")
+    @Column(name="totalcharges", nullable = false)
     private double totalCharges;
 
     @CreatedDate
@@ -50,7 +48,7 @@ public class HotelManagementCheckout {
     private Date creationDate;
 
     @LastModifiedDate
-    @Column(name="lastupdated")
+    @Column(name="lastupdated", nullable = false)
     private Date lastUpdated;
 
     public HotelManagementCheckout() {
@@ -71,11 +69,7 @@ public class HotelManagementCheckout {
         this.hotelManagementReservation=hotelManagementReservation;
     }
 
-    public HotelManagementItems getHotelManagementItems() {
-        return hotelManagementItems;
-    }
-
-    public void setHotelManagementItems(HotelManagementItems hotelManagementItems) {
+    public void setHotelManagementItems(Set<HotelManagementItems> hotelManagementItems) {
         this.hotelManagementItems=hotelManagementItems;
     }
     
