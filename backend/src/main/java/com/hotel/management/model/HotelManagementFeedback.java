@@ -26,8 +26,8 @@ public class HotelManagementFeedback {
     private long feedbackId;
 
     @OneToOne
-    @JoinColumn(name="bookingid",referencedColumnName="bookingid", nullable = false)
-    private HotelManagementReservation hotelManagementReservation;
+    @JoinColumn(name="billingid",referencedColumnName="billingid", nullable = false)
+    private HotelManagementCheckout hotelManagementCheckout;
 
     @Column(name="ratings", nullable = false)
     private double ratings;
@@ -49,12 +49,12 @@ public class HotelManagementFeedback {
         this.ratings=ratings;
     }
     
-    public HotelManagementReservation getHotelManagementReservation() {
-        return hotelManagementReservation;
+    public HotelManagementCheckout getHotelManagementCheckout() {
+        return hotelManagementCheckout;
     }
 
-    public void setHotelManagementReservation(HotelManagementReservation hotelManagementReservation) {
-        this.hotelManagementReservation=hotelManagementReservation;
+    public void setHotelManagementReservation(HotelManagementCheckout hotelManagementCheckout) {
+        this.hotelManagementCheckout=hotelManagementCheckout;
     }
 
     public long getFeedbackId() {

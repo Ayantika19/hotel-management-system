@@ -27,9 +27,9 @@ public class HotelManagementEmployeeRegistration {
     @Column(name="employeeid")
     private long employeeId;
 
-    @ManyToOne
-    @JoinColumn(name="hotelid",referencedColumnName="hotelid", nullable = false)
-    private HotelManagementHotelFacilities hotelManagementHotelFacilities;
+    @ManyToOne 
+    @JoinColumn(name="locationid",referencedColumnName="locationid", nullable = false)
+    private HotelManagementLocation hotelManagementLocation;
 
     @Column(name="firstname", nullable = false)
     private String firstName;
@@ -79,12 +79,12 @@ public class HotelManagementEmployeeRegistration {
         this.lastUpdated=lastUpdated;
     }
     
-    public HotelManagementHotelFacilities getHotelManagementHotelFacilities() {
-        return hotelManagementHotelFacilities;
+    public HotelManagementLocation getHotelManagementLocation() {
+        return hotelManagementLocation;
     }
 
-    public void setHotelManagementHotelFacilities(HotelManagementHotelFacilities hotelManagementHotelFacilities) {
-        this.hotelManagementHotelFacilities=hotelManagementHotelFacilities;
+    public void setHotelManagementHotelFacilities(HotelManagementLocation hotelManagementLocation) {
+        this.hotelManagementLocation=hotelManagementLocation;
     }
 
     public long getEmployeeId() {
