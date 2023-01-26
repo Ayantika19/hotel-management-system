@@ -52,7 +52,10 @@ public class HotelManagementReservation {
     private String locationName;
 
     @Column(name="address", nullable = false)
-    private String guestAddress;
+    private HotelManagementAddress guestAddress;
+
+    @Column(name = "contactnumber", nullable = false)
+    private HotelManagementContactNumber guestContactNumber;
 
     @Column(name="bookingstatus")
     private String bookingStatus;
@@ -81,11 +84,12 @@ public class HotelManagementReservation {
 
     }
 
-    public HotelManagementReservation(String locationName, String guestAddress, String bookingStatus, Date toDate, Date fromDate, byte[] identityProof) {
+    public HotelManagementReservation(String locationName, HotelManagementAddress guestAddress, HotelManagementContactNumber guestContactNumber, String bookingStatus, Date toDate, Date fromDate, byte[] identityProof) {
         
         this.locationName=locationName;
         this.guestAddress=guestAddress;
         this.bookingStatus=bookingStatus;
+        this.guestContactNumber=guestContactNumber;
         this.toDate=toDate;
         this.fromDate=fromDate;
         this.identityProof=identityProof;                                   
@@ -111,7 +115,7 @@ public class HotelManagementReservation {
         this.hotelManagementRooms = hotelManagementRooms;
     }
 
-    public HotelManagementDiscounts hotelManagementDiscounts(HotelManagementDiscounts hotelManagementDiscounts) {
+    public HotelManagementDiscounts gethotelManagementDiscounts(HotelManagementDiscounts hotelManagementDiscounts) {
         return hotelManagementDiscounts;
     }
 
@@ -127,8 +131,12 @@ public class HotelManagementReservation {
         return locationName;
     }
 
-    public String getGuestAddress() {
+    public HotelManagementAddress getGuestAddress() {
         return guestAddress;
+    }
+
+    public HotelManagementContactNumber getGuestContactNumber() {
+        return guestContactNumber;
     }
 
     public String getBookingStatus() {
@@ -167,8 +175,12 @@ public class HotelManagementReservation {
         this.locationName=locationName;
     }
 
-    public void setGuestAddress(String guestAddress) {
+    public void setGuestAddress(HotelManagementAddress guestAddress) {
         this.guestAddress=guestAddress;
+    }
+
+    public void setGuestContactNumber(HotelManagementContactNumber guestContactNumber) {
+        this.guestContactNumber=guestContactNumber;
     }
 
     public void setBookingStatus(String bookingStatus) {

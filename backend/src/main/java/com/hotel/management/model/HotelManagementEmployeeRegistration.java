@@ -44,10 +44,10 @@ public class HotelManagementEmployeeRegistration {
     private char[] password;
 
     @Column(name="contactnumber", nullable = false)
-    private int employeeContactNumber;
+    private HotelManagementContactNumber employeeContactNumber;
 
     @Column(name="address")
-    private String employeeAddress;
+    private HotelManagementAddress employeeAddress;
 
     @Temporal(TemporalType.DATE)
     @Column(name="dob")
@@ -66,7 +66,7 @@ public class HotelManagementEmployeeRegistration {
     }
 
     public HotelManagementEmployeeRegistration(String firstName, String lastName, String emailID,
-                                                char[] password, int employeeContactNumber, String employeeAddress, Date dateOfBirth, 
+                                                char[] password, HotelManagementContactNumber employeeContactNumber, HotelManagementAddress employeeAddress, Date dateOfBirth, 
                                                 Date creationDate, Date lastUpdated) {
         this.firstName=firstName;
         this.lastName=lastName;
@@ -107,11 +107,11 @@ public class HotelManagementEmployeeRegistration {
         return password;
     }
 
-    public int getEmployeeContactNumber() {
+    public HotelManagementContactNumber getEmployeeContactNumber() {
         return employeeContactNumber;
     }
 
-    public String getEmployeeAddress() {
+    public HotelManagementAddress getEmployeeAddress() {
         return employeeAddress;
     }
 
@@ -151,11 +151,11 @@ public class HotelManagementEmployeeRegistration {
         this.password=password;
     }
 
-    public void setEmployeeContactNumber(int employeeContactNumber) {
+    public void setEmployeeContactNumber(HotelManagementContactNumber employeeContactNumber) {
         this.employeeContactNumber=employeeContactNumber;
     }
 
-    public void setemployeeAddress(String employeeAddress) {
+    public void setemployeeAddress(HotelManagementAddress employeeAddress) {
         this.employeeAddress=employeeAddress;
     }
 

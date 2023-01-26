@@ -34,13 +34,13 @@ public class HotelManagementDiscounts {
     private String companyName;
 
     @Column(name="companyaddress")
-    private String companyAddress;
+    private HotelManagementAddress companyAddress;
 
     @Column(name="emailid")
     private String emailID;
 
     @Column(name="contactnumber", nullable = false)
-    private int contactNumber;
+    private HotelManagementContactNumber contactNumber;
 
     @CreatedDate
     @Column(name="creationdate")
@@ -54,7 +54,7 @@ public class HotelManagementDiscounts {
 
     }
 
-    public HotelManagementDiscounts(String companyName, String companyAddress, String emailID, int contactNumber) {
+    public HotelManagementDiscounts(String companyName, HotelManagementAddress companyAddress, String emailID, HotelManagementContactNumber contactNumber) {
         
         this.companyName=companyName;
         this.companyAddress=companyAddress;
@@ -78,7 +78,7 @@ public class HotelManagementDiscounts {
         return companyName;
     }
 
-    public String getCompanyAddress() {
+    public HotelManagementAddress getCompanyAddress() {
         return companyAddress;
     }
 
@@ -86,7 +86,7 @@ public class HotelManagementDiscounts {
         return emailID;
     }
 
-    public int getContactNumber() {
+    public HotelManagementContactNumber getContactNumber() {
         return contactNumber;
     }
 
@@ -102,11 +102,11 @@ public class HotelManagementDiscounts {
         this.companyName=companyName;
     } 
 
-    public void setCompanyAddress(String companyAddress) {
+    public void setCompanyAddress(HotelManagementAddress companyAddress) {
         this.companyAddress=companyAddress;
     }
 
-    public void setContactNumber(int contactNumber) {
+    public void setContactNumber(HotelManagementContactNumber contactNumber) {
         this.contactNumber=contactNumber;
     }
 
