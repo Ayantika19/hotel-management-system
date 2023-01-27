@@ -83,7 +83,7 @@ public class HotelManagementEmployeeRegistration {
         return hotelManagementLocation;
     }
 
-    public void setHotelManagementLocation(HotelManagementLocation hotelManagementLocation) {
+    public void setHotelManagementHotelFacilities(HotelManagementLocation hotelManagementLocation) {
         this.hotelManagementLocation=hotelManagementLocation;
     }
 
