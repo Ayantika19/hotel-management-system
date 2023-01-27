@@ -48,9 +48,6 @@ public class HotelManagementReservation {
     @JoinColumn(name="discountid",referencedColumnName="discountid")
     private HotelManagementDiscounts hotelManagementDiscounts;
 
-    @Column(name="locationname")
-    private String locationName;
-
     @Column(name="address", nullable = false)
     private HotelManagementAddress guestAddress;
 
@@ -84,9 +81,8 @@ public class HotelManagementReservation {
 
     }
 
-    public HotelManagementReservation(String locationName, HotelManagementAddress guestAddress, HotelManagementContactNumber guestContactNumber, String bookingStatus, Date toDate, Date fromDate, byte[] identityProof) {
+    public HotelManagementReservation( HotelManagementAddress guestAddress, HotelManagementContactNumber guestContactNumber, String bookingStatus, Date toDate, Date fromDate, byte[] identityProof) {
         
-        this.locationName=locationName;
         this.guestAddress=guestAddress;
         this.bookingStatus=bookingStatus;
         this.guestContactNumber=guestContactNumber;
@@ -125,10 +121,6 @@ public class HotelManagementReservation {
 
     public long getBookingId() {
         return bookingId;
-    }
-
-    public String getLocationName() {
-        return locationName;
     }
 
     public HotelManagementAddress getGuestAddress() {
@@ -170,10 +162,6 @@ public class HotelManagementReservation {
     public void setlastUpdated(Date lastUpdated) {
         this.lastUpdated=lastUpdated;
     }
-    
-    public void setLocationName(String locationName) {
-        this.locationName=locationName;
-    }
 
     public void setGuestAddress(HotelManagementAddress guestAddress) {
         this.guestAddress=guestAddress;
@@ -201,8 +189,7 @@ public class HotelManagementReservation {
 
     @Override
     public String toString() {
-	    return "Reservation [bookingId=" + bookingId +  ", locationName=" + locationName +
-                            ", guestAddress=" + guestAddress + ", bookingStatus=" + bookingStatus + 
+	    return "Reservation [bookingId=" + bookingId + ", guestAddress=" + guestAddress + ", bookingStatus=" + bookingStatus + 
                             ", identityProof=" + identityProof + 
                             ", toDate=" + toDate + ", fromDate=" + fromDate + ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
     }
