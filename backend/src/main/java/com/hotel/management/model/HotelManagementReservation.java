@@ -39,7 +39,7 @@ public class HotelManagementReservation {
 
     @ManyToOne
     @JoinColumn(name="hotelid",referencedColumnName="hotelid", nullable = false)
-    private HotelManagementHotelFacilities hotelManagementHotelFacilities;
+    private HotelManagementHotelDetails hotelManagementHotelFacilities;
 
     @OneToMany(mappedBy = "hotelManagementReservation")
     private Set<HotelManagementRooms> hotelManagementRooms;
@@ -99,11 +99,11 @@ public class HotelManagementReservation {
         this.hotelManagementGuestRegistration=hotelManagementGuestRegistration;
     }
 
-    public HotelManagementHotelFacilities getHotelManagementHotelFacilities() {
+    public HotelManagementHotelDetails getHotelManagementHotelFacilities() {
         return hotelManagementHotelFacilities;
     }
 
-    public void setHotelManagementHotelFacilities(HotelManagementHotelFacilities hotelManagementHotelFacilities) {
+    public void setHotelManagementHotelFacilities(HotelManagementHotelDetails hotelManagementHotelFacilities) {
         this.hotelManagementHotelFacilities=hotelManagementHotelFacilities;
     }
 

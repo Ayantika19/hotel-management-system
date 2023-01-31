@@ -27,7 +27,7 @@ public class HotelManagementLocation {
 
     @ManyToOne
     @JoinColumn(name = "hotelid", referencedColumnName = "hotelid", nullable = false)
-    private HotelManagementHotelFacilities hotelManagementHotelFacilities;
+    private HotelManagementHotelDetails hotelManagementHotelFacilities;
 
     @Column(name="locationname", nullable = false)
     private String locationName;
@@ -54,11 +54,11 @@ public class HotelManagementLocation {
         return locationId;
     }
 
-    public HotelManagementHotelFacilities getHotelManagementHotelFacilities() {
+    public HotelManagementHotelDetails getHotelManagementHotelFacilities() {
         return hotelManagementHotelFacilities;
     }
 
-    public void setHotelManagementHotelFacilities(HotelManagementHotelFacilities hotelManagementHotelFacilities) {
+    public void setHotelManagementHotelFacilities(HotelManagementHotelDetails hotelManagementHotelFacilities) {
         this.hotelManagementHotelFacilities = hotelManagementHotelFacilities;
     }
 

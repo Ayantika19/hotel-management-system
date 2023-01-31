@@ -3,11 +3,15 @@ package com.hotel.management.model;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.OneToMany;
 import javax.persistence.EntityListeners;
 import javax.persistence.Column;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.Set;
 
@@ -18,7 +22,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Entity
 @Table(name = "hotel")
 @EntityListeners(AuditingEntityListener.class)
-public class HotelManagementHotelFacilities {
+public class HotelManagementHotelDetails {
     
     @Id
     @GeneratedValue
@@ -27,6 +31,16 @@ public class HotelManagementHotelFacilities {
 
     @OneToMany(mappedBy = "hotelManagementHotelFacilities")
     private Set<HotelManagementLocation> hotelManagementLocation;
+
+    @ManyToMany
+    @JoinTable(name="hotelitems", joinColumns = @JoinColumn(name="hotelid",referencedColumnName = "hotelid"), 
+                                                inverseJoinColumns = @JoinColumn(name="itemid", referencedColumnName = "itemid"))
+    private Collection<HotelManagementItems> hotelManagementItems;
+
+    @ManyToMany
+    @JoinTable(name="hoteldiscounts", joinColumns = @JoinColumn(name="hotelid",referencedColumnName = "hotelid"), 
+                                                    inverseJoinColumns = @JoinColumn(name="discountid", referencedColumnName = "discountid"))
+    private Collection<HotelManagementDiscounts> hotelManagementDiscounts;
 
     @Column(name="gym")
     private boolean gymAvailable;
@@ -60,11 +74,11 @@ public class HotelManagementHotelFacilities {
     @Column(name="lastupdated", nullable = false)
     private Date lastUpdated;
 
-    public HotelManagementHotelFacilities() {
+    public HotelManagementHotelDetails() {
 
     }
 
-    public HotelManagementHotelFacilities(boolean gymAvailable, boolean swimmingPoolAvailable, boolean parkingZoneAvailable, 
+    public HotelManagementHotelDetails(boolean gymAvailable, boolean swimmingPoolAvailable, boolean parkingZoneAvailable, 
                                           int totalRooms, int roomsAvailable, boolean carRentAvailable, boolean gameZoneAvailable, 
                                           boolean laundryAvailable, Date creationDate, Date lastUpdated) {
         this.gymAvailable=gymAvailable;
@@ -85,6 +99,22 @@ public class HotelManagementHotelFacilities {
 
     public void setHotelManagementLocation(Set<HotelManagementLocation> hotelManagementLocation) {
         this.hotelManagementLocation=hotelManagementLocation;
+    }
+
+    public Collection<HotelManagementItems> getHotelManagementHotelItems() {
+        return hotelManagementItems;
+    }
+
+    public void setHotelManagementHotelItems(Collection<HotelManagementItems> hotelManagementItems) {
+        this.hotelManagementItems = hotelManagementItems;
+    }
+
+    public Collection<HotelManagementDiscounts> getHotelManagementDiscounts() {
+        return hotelManagementDiscounts;
+    }
+
+    public void setHotelManagementDiscounts(Collection<HotelManagementDiscounts> hotelManagementDiscounts) {
+        this.hotelManagementDiscounts = hotelManagementDiscounts;
     }
 
     public long getHotelId() {

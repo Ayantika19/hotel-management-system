@@ -8,9 +8,13 @@ import javax.persistence.Column;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.data.annotation.CreatedDate;
@@ -30,6 +34,10 @@ public class HotelManagementEmployeeRegistration {
     @ManyToOne 
     @JoinColumn(name="locationid",referencedColumnName="locationid", nullable = false)
     private HotelManagementLocation hotelManagementLocation;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="employeesroles", joinColumns = @JoinColumn(name="employeeid",referencedColumnName = "employeeid"), inverseJoinColumns = @JoinColumn(name="roleid", referencedColumnName = "roleid"))
+    private Collection<HotelManagementRoles> hotelManagementRoles;
 
     @Column(name="firstname", nullable = false)
     private String firstName;
@@ -85,6 +93,14 @@ public class HotelManagementEmployeeRegistration {
 
     public void setHotelManagementHotelFacilities(HotelManagementLocation hotelManagementLocation) {
         this.hotelManagementLocation=hotelManagementLocation;
+    }
+
+    public Collection<HotelManagementRoles> getHotelManagementRoles() {
+        return hotelManagementRoles;
+    }
+
+    public void setHotelManagementRoles(Collection<HotelManagementRoles> hotelManagementRoles) {
+        this.hotelManagementRoles = hotelManagementRoles;
     }
 
     public long getEmployeeId() {

@@ -5,9 +5,9 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
-import javax.persistence.ManyToOne;
-import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.EntityListeners;
@@ -26,9 +26,8 @@ public class HotelManagementDiscounts {
     @Column(name="discountid")
     private long discountId;
 
-    @ManyToOne
-    @JoinColumn(name="hotelid",referencedColumnName="hotelid", nullable = false)
-    private HotelManagementHotelFacilities hotelManagementHotelFacilities;
+    @ManyToMany(mappedBy = "hotelManagementDiscounts")
+    private Collection<HotelManagementHotelDetails> hotelManagementHotelDetails;
 
     @Column(name="companyname", nullable = false)
     private String companyName;
@@ -62,12 +61,12 @@ public class HotelManagementDiscounts {
         this.contactNumber=contactNumber;
     }
 
-    public HotelManagementHotelFacilities getHotelManagementHotelFacilities() {
-        return hotelManagementHotelFacilities;
+    public Collection<HotelManagementHotelDetails> getHotelManagementHotelDetails() {
+        return hotelManagementHotelDetails;
     }
 
-    public void setHotelManagementHotelFacilities(HotelManagementHotelFacilities hotelManagementHotelFacilities) {
-        this.hotelManagementHotelFacilities=hotelManagementHotelFacilities;
+    public void setHotelManagementHotelDetails(Collection<HotelManagementHotelDetails> hotelManagementHotelDetails) {
+        this.hotelManagementHotelDetails=hotelManagementHotelDetails;
     }
     
     public long getDiscountId() {

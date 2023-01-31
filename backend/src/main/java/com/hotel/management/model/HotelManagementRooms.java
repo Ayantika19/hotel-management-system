@@ -29,7 +29,7 @@ public class HotelManagementRooms {
 
     @ManyToOne
     @JoinColumn(name="hotelid", referencedColumnName="hotelid", nullable = false)
-    private HotelManagementHotelFacilities hotelManagementHotelFacilities;
+    private HotelManagementHotelDetails hotelManagementHotelFacilities;
 
     @ManyToOne
     @JoinColumn(name = "bookingid", referencedColumnName="bookingid")

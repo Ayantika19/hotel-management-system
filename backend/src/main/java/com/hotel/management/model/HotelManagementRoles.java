@@ -30,10 +30,13 @@ public class HotelManagementRoles {
     private String roleName;
 
     @ManyToMany(mappedBy = "hotelManagementRoles")
-    private Collection<HotelManagementUser> hotelManagementUsers;
+    private Collection<HotelManagementEmployeeRegistration> hotelManagementEmployeeRegistration;
+
+    @ManyToMany(mappedBy = "hotelManagementRoles")
+    private Collection<HotelManagementGuestRegistration> hotelManagementGuestRegistration;
 
     @ManyToMany
-    @JoinTable(name = "privileges", joinColumns = @JoinColumn(name = "roleid", referencedColumnName = "roleid"), inverseJoinColumns = @JoinColumn(name = "privilegeid", referencedColumnName = "privilegeid"))
+    @JoinTable(name = "rolesandprivileges", joinColumns = @JoinColumn(name = "roleid", referencedColumnName = "roleid"), inverseJoinColumns = @JoinColumn(name = "privilegeid", referencedColumnName = "privilegeid"))
     private Collection<HotelManagementPrivileges> hotelManagementPrivileges;
 
     @CreatedDate
@@ -70,12 +73,20 @@ public class HotelManagementRoles {
         return lastUpdated;
     }
 
-    public Collection<HotelManagementUser> getHotelManagementUsers() {
-        return hotelManagementUsers;
+    public Collection<HotelManagementEmployeeRegistration> getHotelManagementEmployeeRegistration() {
+        return hotelManagementEmployeeRegistration;
     }
 
-    public void setHotelManagementUsers(Collection<HotelManagementUser> hotelManagementUsers) {
-        this.hotelManagementUsers = hotelManagementUsers;
+    public void setHotelManagementEmployeeRegistration(Collection<HotelManagementEmployeeRegistration> hotelManagementEmployeeRegistration) {
+        this.hotelManagementEmployeeRegistration = hotelManagementEmployeeRegistration;
+    }
+
+    public Collection<HotelManagementGuestRegistration> getHotelManagementGuestRegistration() {
+        return hotelManagementGuestRegistration;
+    }
+
+    public void setHotelManagementGuestRegistration(Collection<HotelManagementGuestRegistration> hotelManagementGuestRegistration) {
+        this.hotelManagementGuestRegistration = hotelManagementGuestRegistration;
     }
 
     public Collection<HotelManagementPrivileges> getHotelManagementPrivileges() {

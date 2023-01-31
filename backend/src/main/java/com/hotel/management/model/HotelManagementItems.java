@@ -5,10 +5,12 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.EntityListeners;
 import javax.persistence.Column;
 import javax.persistence.ManyToOne;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.data.annotation.CreatedDate;
@@ -24,9 +26,8 @@ public class HotelManagementItems {
     @Column(name="itemid")
     private long itemId;
 
-    @ManyToOne
-    @JoinColumn(name="hotelid",referencedColumnName="hotelid", nullable = false)
-    private HotelManagementHotelFacilities hotelManagementHotelFacilities; 
+    @ManyToMany(mappedBy = "hotelManagementItems")
+    private Collection<HotelManagementHotelDetails> hotelManagementHotelDetails;
 
     @ManyToOne
     @JoinColumn(name="billingid")
@@ -61,12 +62,12 @@ public class HotelManagementItems {
         return hotelManagementCheckout;
     }
     
-    public HotelManagementHotelFacilities getHotelManagementHotelFacilities() {
-        return hotelManagementHotelFacilities;
+    public Collection<HotelManagementHotelDetails> getHotelManagementHotelDetails() {
+        return hotelManagementHotelDetails;
     }
 
-    public void setHotelManagementHotelFacilities(HotelManagementHotelFacilities hotelManagementHotelFacilities) {
-        this.hotelManagementHotelFacilities=hotelManagementHotelFacilities;
+    public void setHotelManagementHotelFacilities(Collection<HotelManagementHotelDetails> hotelManagementHotelDetails) {
+        this.hotelManagementHotelDetails=hotelManagementHotelDetails;
     }
     
     public long getItemId() {
