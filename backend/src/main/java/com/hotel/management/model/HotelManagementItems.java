@@ -4,11 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.EntityListeners;
 import javax.persistence.Column;
-import javax.persistence.ManyToOne;
 
 import java.util.Collection;
 import java.util.Date;
@@ -29,9 +27,8 @@ public class HotelManagementItems {
     @ManyToMany(mappedBy = "hotelManagementItems")
     private Collection<HotelManagementHotelDetails> hotelManagementHotelDetails;
 
-    @ManyToOne
-    @JoinColumn(name="billingid")
-    private HotelManagementCheckout hotelManagementCheckout;
+    @ManyToMany(mappedBy = "hotelManagementItems")
+    private Collection<HotelManagementCheckout> hotelManagementCheckout;
 
     @Column(name="itemname", nullable = false)
     private String itemName;
@@ -58,8 +55,12 @@ public class HotelManagementItems {
         this.lastUpdated=lastUpdated;
     }
 
-    public HotelManagementCheckout getHotelManagementCheckout() {
+    public Collection<HotelManagementCheckout> getHotelManagementCheckout() {
         return hotelManagementCheckout;
+    }
+    
+    public void setHotelManagementCheckout(Collection<HotelManagementCheckout> hotelManagementCheckout) {
+        this.hotelManagementCheckout=hotelManagementCheckout;
     }
     
     public Collection<HotelManagementHotelDetails> getHotelManagementHotelDetails() {

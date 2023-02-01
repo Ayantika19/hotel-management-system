@@ -6,14 +6,16 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.EntityListeners;
 import javax.persistence.OneToOne;
-import javax.persistence.OneToMany;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.Set;
 
@@ -27,8 +29,10 @@ public class HotelManagementCheckout {
     @Column(name="billingid")
     private long billingId;
     
-    @OneToMany(mappedBy="hotelManagementCheckout")
-    private Set<HotelManagementItems> hotelManagementItems;
+    @ManyToMany
+    @JoinTable(name="checkoutitems", joinColumns = @JoinColumn(name="billingid",referencedColumnName = "billingid"), 
+                                                inverseJoinColumns = @JoinColumn(name="itemid", referencedColumnName = "itemid"))
+    private Collection<HotelManagementItems> hotelManagementItems;
 
     @OneToOne
     @JoinColumn(name="bookingid",referencedColumnName="bookingid", nullable = false)
@@ -59,6 +63,14 @@ public class HotelManagementCheckout {
         this.paymentStatus=paymentStatus;
         this.gst=gst;
         this.totalCharges=totalCharges;
+    }
+
+    public Collection<HotelManagementItems> getHotelManagementHotelItems() {
+        return hotelManagementItems;
+    }
+
+    public void setHotelManagementHotelItems(Collection<HotelManagementItems> hotelManagementItems) {
+        this.hotelManagementItems = hotelManagementItems;
     }
 
     public HotelManagementReservation getHotelManagementReservation() {
