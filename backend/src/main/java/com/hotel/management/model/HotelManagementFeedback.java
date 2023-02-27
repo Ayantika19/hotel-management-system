@@ -4,10 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.EntityListeners;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
 import java.util.Date;
 
@@ -21,15 +23,16 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public class HotelManagementFeedback {
     
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name="feedback_seq", allocationSize = 1)        
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="feedback_seq")
     @Column(name="feedbackid")
     private long feedbackId;
 
     @OneToOne
-    @JoinColumn(name="billingid",referencedColumnName="billingid", nullable = false)
+    @JoinColumn(name="billingid",referencedColumnName="billingid")
     private HotelManagementCheckout hotelManagementCheckout;
 
-    @Column(name="ratings", nullable = false)
+    @Column(name="ratings")
     private double ratings;
 
     @CreatedDate
@@ -37,7 +40,7 @@ public class HotelManagementFeedback {
     private Date creationDate;
 
     @LastModifiedDate
-    @Column(name="lastupdated", nullable = false)
+    @Column(name="lastupdated")
     private Date lastUpdated;
 
     public HotelManagementFeedback() {

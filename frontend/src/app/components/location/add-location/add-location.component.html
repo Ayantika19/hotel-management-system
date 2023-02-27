@@ -1,0 +1,23 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="locationname">Location Name</label>
+        <input
+          class="form-control"
+          id="locationname"
+          required
+          [(ngModel)]="location.locationname"
+          name="locationname"
+        />
+      </div>
+
+      <button (click)="saveLocation()" class="btn btn-success">Submit</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Location was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newLocation()">Add</button>
+    </div>
+  </div>
+</div>

@@ -4,9 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.EntityListeners;
 
 import java.util.Date;
@@ -20,16 +22,17 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners(AuditingEntityListener.class)
 public class HotelManagementRooms {
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name="rooms_seq", allocationSize = 1)        
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="rooms_seq")
     @Column(name="roomid")
     private long roomId;
 
-    @Column(name="roomnumber")
+    @Column(name="roomnumber", nullable = false)
     private int roomNumber;
 
     @ManyToOne
-    @JoinColumn(name="hotelid", referencedColumnName="hotelid", nullable = false)
-    private HotelManagementHotelDetails hotelManagementHotelFacilities;
+    @JoinColumn(name="hotelid", referencedColumnName="hotelid")
+    private HotelManagementHotelDetails hotelManagementHotelDetails;
 
     @ManyToOne
     @JoinColumn(name = "bookingid", referencedColumnName="bookingid")
@@ -46,7 +49,7 @@ public class HotelManagementRooms {
     private Date creationDate;
 
     @LastModifiedDate
-    @Column(name="lastupdated", nullable = false)
+    @Column(name="lastupdated")
     private Date lastUpdated;
 
     public HotelManagementRooms() {
@@ -81,6 +84,14 @@ public class HotelManagementRooms {
     
     public Date getlastUpdated() {
         return lastUpdated;
+    }
+
+    public HotelManagementHotelDetails getHotelManagementHotelDetails() {
+        return hotelManagementHotelDetails;
+    }
+
+    public void setHotelManagementHotelDetails(HotelManagementHotelDetails hotelManagementHotelDetails) {
+        this.hotelManagementHotelDetails = hotelManagementHotelDetails;
     }
     
     public HotelManagementReservation getHotelManagementReservation() {

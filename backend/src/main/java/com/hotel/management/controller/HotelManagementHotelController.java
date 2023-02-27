@@ -1,64 +1,58 @@
-// package com.hotel.management.controller;
+package com.hotel.management.controller;
 
-// import java.util.ArrayList;
-// import java.util.List;
-// import java.util.Optional;
+import java.util.List;
 
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.http.HttpStatus;
-// import org.springframework.http.ResponseEntity;
-// import org.springframework.web.bind.annotation.CrossOrigin;
-// import org.springframework.web.bind.annotation.DeleteMapping;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.PathVariable;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.PutMapping;
-// import org.springframework.web.bind.annotation.RequestBody;
-// import org.springframework.web.bind.annotation.RequestMapping;
-// import org.springframework.web.bind.annotation.RequestParam;
-// import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-// import com.hotel.management.model.*;
-// import com.hotel.management.repository.HotelManagementHotelRepository;
+import com.hotel.management.model.HotelManagementHotelDetails;
+import com.hotel.management.service.HotelManagementHotelService;
 
-// @CrossOrigin(origins = "http://localhost:8081")
-// @RestController
-// @RequestMapping("/api/v1")
-// public class HotelManagementHotelController {
+@RestController
+@RequestMapping("/api/hm/hotel")
+public class HotelManagementHotelController {
 
-// 	@Autowired
-// 	HotelManagementHotelRepository hotelManagementHotelRepository;
+    @Autowired
+    HotelManagementHotelService hotelManagementHotelService;
+    
+    private static final String APPLICATION_VND_API_JSON = "application/json";
 
-// 	// @GetMapping(path="/all/locations")
-// 	// public ResponseEntity<List<HotelManagementLocation>> getAllLocationNames() {
-// 	// 	try {
-// 	// 		List<HotelManagementLocation> location = new ArrayList<HotelManagementLocation>();
-			
-// 	// 		hotelManagementHotelRepository.findAll().forEach(location::add);
-			
-// 	// 		if (location.isEmpty()) {
-				
-// 	// 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-// 	// 		}
-			
-// 	// 		return new ResponseEntity<>(location, HttpStatus.OK);
+    @PostMapping(value ="/newhotel", produces = APPLICATION_VND_API_JSON , consumes = APPLICATION_VND_API_JSON)
+	public ResponseEntity<HotelManagementHotelDetails> createHotelManagementHotelDetails (@RequestBody HotelManagementHotelDetails newhotelManagementHotelDetails) {
+		System.out.println(newhotelManagementHotelDetails);
+		HotelManagementHotelDetails newhotel = hotelManagementHotelService.saveHotelDetails(newhotelManagementHotelDetails);
+		return new ResponseEntity<HotelManagementHotelDetails>(newhotelManagementHotelDetails, HttpStatus.CREATED);
+	}
 
-// 	// 	} catch (Exception e) {
-			
-// 	// 		return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		
-// 	// 	}
-// 	// }
+	@GetMapping(value="/find/{id}", produces = APPLICATION_VND_API_JSON)
+	public ResponseEntity<HotelManagementHotelDetails> getHotelDetailsById(@PathVariable long id) {
+		HotelManagementHotelDetails findhotelManagementHotelDetails = hotelManagementHotelService.getHotelDetailsById(id);
+		return new ResponseEntity<HotelManagementHotelDetails>(findhotelManagementHotelDetails, HttpStatus.OK);
+	}
 
-// 	@PostMapping("/add/location")
-// 	public ResponseEntity<HotelManagementLocation> addNewLocation(@RequestBody HotelManagementLocation location) {
-// 		try {
-// 				HotelManagementLocation newLocation = hotelManagementHotelRepository
-// 						.save(new HotelManagementLocation(location.getLocationName(), location.getHotelId(), 
-// 														location.getcreationDate(), location.getlastUpdated()));
-// 				return new ResponseEntity<>(newLocation, HttpStatus.CREATED);
-// 			} catch (Exception e) {
-// 				return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-// 			}
-// 		}
-// }
+	@PutMapping(value="/update/{id}", produces = APPLICATION_VND_API_JSON)
+	public ResponseEntity<HotelManagementHotelDetails> updateHotelDetails(@PathVariable("id") long id, @RequestBody HotelManagementHotelDetails hotelManagementHotelDetails) {
+		HotelManagementHotelDetails updatehotelManagementHotelDetails = hotelManagementHotelService.updateHotelDetails(hotelManagementHotelDetails, id);
+		return new ResponseEntity<HotelManagementHotelDetails>(updatehotelManagementHotelDetails, HttpStatus.OK);
+	}
+	
+	@DeleteMapping(value="/remove/{id}", produces = APPLICATION_VND_API_JSON)
+	public ResponseEntity<String> deleteHotel(@PathVariable("id") long id) {
+		hotelManagementHotelService.deleteHotel(id);
+		return new ResponseEntity<String>("Hotel deleted successfully", HttpStatus.OK);
+	}
+
+	@GetMapping(value="/allhotels", produces = APPLICATION_VND_API_JSON)
+	public List<HotelManagementHotelDetails> getAllHotels() {
+		return hotelManagementHotelService.getAllDetailsOfAllHotels();
+	}
+}

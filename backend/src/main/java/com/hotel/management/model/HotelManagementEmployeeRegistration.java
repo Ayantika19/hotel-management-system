@@ -2,19 +2,17 @@ package com.hotel.management.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Column;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Column;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
 
-import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.data.annotation.CreatedDate;
@@ -27,79 +25,97 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public class HotelManagementEmployeeRegistration {
 
     @Id
-    @GeneratedValue
-    @Column(name="employeeid")
+    @SequenceGenerator(name = "employee_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_seq")
+    @Column(name = "employeeid")
     private long employeeId;
 
-    @ManyToOne 
-    @JoinColumn(name="locationid",referencedColumnName="locationid", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "locationid", referencedColumnName = "locationid")
     private HotelManagementLocation hotelManagementLocation;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="employeesroles", joinColumns = @JoinColumn(name="employeeid",referencedColumnName = "employeeid"), inverseJoinColumns = @JoinColumn(name="roleid", referencedColumnName = "roleid"))
-    private Collection<HotelManagementRoles> hotelManagementRoles;
+    @ManyToOne
+    @JoinColumn (name = "roleid")
+    private HotelManagementRoles hotelManagementRoles;
 
-    @Column(name="firstname", nullable = false)
+    @Column(name = "firstname", nullable = false)
     private String firstName;
 
-    @Column(name="lastname", nullable = false)
+    @Column(name = "lastname")
     private String lastName;
 
-    @Column(name="emailid", nullable = false)
+    @Column(name = "emailid", unique = true, nullable = false)
     private String emailID;
 
-    @Column(name="password", nullable = false)
+    @Column(name = "password", nullable = false)
     private char[] password;
 
-    @Column(name="contactnumber", nullable = false)
-    private HotelManagementContactNumber employeeContactNumber;
+    @Column(name = "countrycode", nullable = false)
+    private String countrycode;
 
-    @Column(name="address")
-    private HotelManagementAddress employeeAddress;
+    @Column(name = "number", unique = true, nullable = false)
+    private long number;
+
+    @Column(name = "housenumber", nullable = false)
+    private int houseNumber;
+
+    @Column(name = "street", nullable = false)
+    private String street;
+
+    @Column(name = "city", nullable = false)
+    private String city;
+
+    @Column(name = "pincode", nullable = false)
+    private long pincode;
 
     @Temporal(TemporalType.DATE)
-    @Column(name="dob")
+    @Column(name = "dob", nullable = false)
     private Date dateOfBirth;
 
     @CreatedDate
-    @Column(name="creationdate")
+    @Column(name = "creationdate")
     private Date creationDate;
 
     @LastModifiedDate
-    @Column(name="lastupdated", nullable = false)
+    @Column(name = "lastupdated")
     private Date lastUpdated;
-    
+
     public HotelManagementEmployeeRegistration() {
 
     }
 
     public HotelManagementEmployeeRegistration(String firstName, String lastName, String emailID,
-                                                char[] password, HotelManagementContactNumber employeeContactNumber, HotelManagementAddress employeeAddress, Date dateOfBirth, 
-                                                Date creationDate, Date lastUpdated) {
-        this.firstName=firstName;
-        this.lastName=lastName;
-        this.emailID=emailID;
-        this.password=password;
-        this.employeeContactNumber=employeeContactNumber;
-        this.employeeAddress=employeeAddress;
-        this.dateOfBirth=dateOfBirth;
-        this.creationDate=creationDate;
-        this.lastUpdated=lastUpdated;
+            char[] password, int houseNumber, String street, String city, long pincode,
+            String countrycode, long number, Date dateOfBirth,
+            Date creationDate, Date lastUpdated) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.emailID = emailID;
+        this.password = password;
+        this.houseNumber = houseNumber;
+        this.street = street;
+        this.city = city;
+        this.pincode = pincode;
+        this.countrycode = countrycode;
+        this.number = number;
+        this.dateOfBirth = dateOfBirth;
+        this.creationDate = creationDate;
+        this.lastUpdated = lastUpdated;
     }
-    
+
     public HotelManagementLocation getHotelManagementLocation() {
         return hotelManagementLocation;
     }
 
     public void setHotelManagementHotelFacilities(HotelManagementLocation hotelManagementLocation) {
-        this.hotelManagementLocation=hotelManagementLocation;
+        this.hotelManagementLocation = hotelManagementLocation;
     }
 
-    public Collection<HotelManagementRoles> getHotelManagementRoles() {
+    public HotelManagementRoles getHotelManagementRoles() {
         return hotelManagementRoles;
     }
 
-    public void setHotelManagementRoles(Collection<HotelManagementRoles> hotelManagementRoles) {
+    public void setHotelManagementRoles(HotelManagementRoles hotelManagementRoles) {
         this.hotelManagementRoles = hotelManagementRoles;
     }
 
@@ -107,7 +123,7 @@ public class HotelManagementEmployeeRegistration {
         return employeeId;
     }
 
-    public String getfirstname () {
+    public String getfirstname() {
         return firstName;
     }
 
@@ -123,66 +139,101 @@ public class HotelManagementEmployeeRegistration {
         return password;
     }
 
-    public HotelManagementContactNumber getEmployeeContactNumber() {
-        return employeeContactNumber;
+    public int getHouseNumber() {
+        return houseNumber;
     }
 
-    public HotelManagementAddress getEmployeeAddress() {
-        return employeeAddress;
+    public String getCity() {
+        return city;
     }
 
-    public Date getEmployeeDOB() {
+    public String getStreet() {
+        return street;
+    }
+
+    public long getPincode() {
+        return pincode;
+    }
+
+    public String getCountryCode() {
+        return countrycode;
+    }
+
+    public long getNumber() {
+        return number;
+    }
+
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
     public Date getcreationDate() {
         return creationDate;
     }
-    
+
     public Date getlastUpdated() {
         return lastUpdated;
     }
 
     public void setcreationDate(Date creationDate) {
-        this.creationDate=creationDate;
+        this.creationDate = creationDate;
     }
-    
+
     public void setlastUpdated(Date lastUpdated) {
-        this.lastUpdated=lastUpdated;
+        this.lastUpdated = lastUpdated;
     }
 
     public void setfirstname(String firstName) {
-        this.firstName=firstName;
+        this.firstName = firstName;
     }
 
     public void setlastname(String lastName) {
-        this.lastName=lastName;
+        this.lastName = lastName;
     }
 
     public void setEmailID(String emailID) {
-        this.emailID=emailID;
+        this.emailID = emailID;
     }
 
     public void setPassword(char[] password) {
-        this.password=password;
+        this.password = password;
     }
 
-    public void setEmployeeContactNumber(HotelManagementContactNumber employeeContactNumber) {
-        this.employeeContactNumber=employeeContactNumber;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public void setemployeeAddress(HotelManagementAddress employeeAddress) {
-        this.employeeAddress=employeeAddress;
+    public void setCountrycode(String countrycode) {
+        this.countrycode = countrycode;
     }
 
-    public void setDOB(Date dateOfBirth) {
-        this.dateOfBirth=dateOfBirth;
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setPincode(long pincode) {
+        this.pincode = pincode;
+    }
+
+    public void setHouseNumber(int houseNumber) {
+        this.houseNumber = houseNumber;
+    }
+
+    public void setNumber(long number) {
+        this.number = number;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     @Override
     public String toString() {
-	    return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName + ", emailID=" + emailID + ", password=" + password.toString() + 
-                          ", contactNumber=" + employeeContactNumber + ", address=" + employeeAddress + ", DOB=" + dateOfBirth + 
-                          ", creationDate=" + creationDate + ", lastUpdated=" + lastUpdated + "]";
-    }    
+        return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName
+                + ", emailID=" + emailID + ", password=" + password.toString() +
+                ", houseNumber=" + houseNumber + ", street=" + street + ", city=" + city + ", pincode=" + pincode
+                + ", countrycode=" + countrycode +
+                ", number=" + number + ", DOB=" + dateOfBirth + ", creationDate=" + creationDate + ", lastUpdated="
+                + lastUpdated + "]";
+    }
 }
