@@ -1,0 +1,36 @@
+<div class="list-row">
+  <div class="col-md-6">
+    <h4>Items List</h4>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let it of items let i = index" [class.active]="i == currentIndex"
+        (click)="setActiveItem(it, i)">
+        {{ it.itemName }}
+      </li>
+    </ul>
+    <a class="btn btn-success" routerLink="/add-items">
+      Add Item
+    </a>
+  </div>
+</div>
+<div class="list">
+  <div class="col-md-6">
+    <div *ngIf="currentItem">
+      <h4>Item Details</h4>
+      <div>
+        <label><strong>Item Name :</strong></label> {{ currentItem.itemName }}
+      </div>
+      <div>
+        <label><strong>Charges :</strong></label>
+        {{ currentItem.charges }}
+      </div>
+      <div *ngIf="currentItem"> 
+        <a class="btn btn-warning" routerLink="/discount/{{ currentItem.itemId }}">
+          Edit
+        </a>
+        <a class="btn btn-danger" routerLink="/item/{{ currentItem.itemId }}">
+          Delete
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div>
+  <div *ngIf="currentDiscount.discountId" class="edit-form">
+    <form>
+      <div class="form-group">
+        <label for="companyName">Company Name</label>
+        <input type="text" class="form-control" id="companyName" [(ngModel)]="currentDiscount.companyName"
+          name="companyName" />
+      </div>
+      <div class="form-group">
+        <label for="houseNumber">House Number</label>
+        <input type="text" class="form-control" id="houseNumber" [(ngModel)]="currentDiscount.houseNumber"
+          name="houseNumber" />
+      </div>
+      <div class="form-group">
+        <label for="street">Street</label>
+        <input type="text" class="form-control" id="street" [(ngModel)]="currentDiscount.street" name="street" />
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="city" [(ngModel)]="currentDiscount.city" name="city" />
+      </div>
+      <div class="form-group">
+        <label for="pincode">Pincode</label>
+        <input type="text" class="form-control" id="pincode" [(ngModel)]="currentDiscount.pincode" name="pincode" />
+      </div>
+      <div class="form-group">
+        <label for="emailID">EmailId</label>
+        <input type="text" class="form-control" id="emailID" [(ngModel)]="currentDiscount.emailID" name="emailID" />
+      </div>
+      <div class="form-group">
+        <label for="countrycode">Country Code</label>
+        <input type="text" class="form-control" id="countrycode" [(ngModel)]="currentDiscount.countrycode" name="countrycode" />
+      </div>
+      <div class="form-group">
+        <label for="number">Contact Number</label>
+        <input type="text" class="form-control" id="number" [(ngModel)]="currentDiscount.number" name="number" />
+      </div>
+      <div class="form-group">
+        <label for="rebate">Rebate</label>
+        <input type="text" class="form-control" id="rebate" [(ngModel)]="currentDiscount.rebate" name="rebate" />
+      </div>
+    </form>
+    <a class="btn btn-danger" (click)="deleteDiscount()">
+      Delete
+    </a>
+    <a class="btn btn-success" routerLink="/discount">
+      All Corporate Discounts
+    </a>
+    <a class="btn btn-warning" (click)="updateDiscount()">
+      Update
+    </a>
+  </div>
+</div>

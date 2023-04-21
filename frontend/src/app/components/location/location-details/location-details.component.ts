@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LocationService } from 'src/app/services/location/location.service';
+import { LocationService } from 'src/app/_services/location/location.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from 'src/app/models/location/location.model';
 
@@ -10,8 +10,7 @@ import { Location } from 'src/app/models/location/location.model';
 })
 export class LocationDetailsComponent implements OnInit {
   currentLocation: Location = {
-    id: '',
-    locationname: '',
+    locationName: '',
   };
   message = '';
 
@@ -37,48 +36,17 @@ export class LocationDetailsComponent implements OnInit {
         });
   }
 
-//   updatePublished(status: boolean): void {
-//     const data = {
-//       id: this.currentLocation.id,
-//       locationname: this.currentLocation.locationname,
-//     };
-
-//     this.message = '';
-
-//     this.locationService.update(this.currentLocation.id, data)
-//       .subscribe(
-//         response => {
-//           console.log(response);
-//           this.message = response.message ? response.message : 'This location was updated successfully!';
-//         },
-//         error => {
-//           console.log(error);
-//         });
-//   }
-
-  // updateLocation(): void {
-  //   this.message = '';
-
-  //   this.locationService.update(this.currentLocation.id, this.currentLocation)
-  //     .subscribe(
-  //       response => {
-  //         console.log(response);
-  //         this.message = response.message ? response.message : 'This location was updated successfully!';
-  //       },
-  //       error => {
-  //         console.log(error);
-  //       });
-  // }
-
   deleteLocation(): void {
-    this.locationService.delete(this.currentLocation.id)
+    this.message = '';
+    this.locationService.delete(this.currentLocation.locationId)
       .subscribe(
         response => {
           console.log(response);
-          this.router.navigate(['/alllocations']);
+          this.message = response.message ? response.message : 'This location is deleted successfully!';
+          this.router.navigate(['/location']);
         },
         error => {
           console.log(error);
         });
   }
-}
+    }

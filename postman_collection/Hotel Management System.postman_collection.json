@@ -1,0 +1,1767 @@
+{
+	"info": {
+		"_postman_id": "96000fe5-e38d-4229-8e92-0a847a1e0787",
+		"name": "Hotel Management System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21351462"
+	},
+	"item": [
+		{
+			"name": "User Signup",
+			"item": [
+				{
+					"name": "New Guest Registration",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"sam\",\r\n    \"email\" : \"sam@gmail.com\",\r\n    \"password\" : \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/auth/signup",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Admin Registration",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"email\" : \"admin@hm.com\",\r\n    \"password\" : \"Admin@12345\",\r\n    \"role\" : [\"admin\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/auth/signup",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Manager Registration",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"manager\",\r\n    \"email\" : \"adam@hm.com\",\r\n    \"password\" : \"Manager@12345\",\r\n    \"role\" : [\"manager\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/auth/signup",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New FrontendEmployee Registration",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"frontend employee\",\r\n    \"email\" : \"david@hm.com\",\r\n    \"password\" : \"David@12345\",\r\n    \"role\" : [\"frontendemployee\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/auth/signup",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Admin SignIn",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"Admin@12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/auth/signin",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Manager SignIn",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"manager\",\r\n    \"password\" : \"Manager@12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/auth/signin",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Frontend Employee SignIn",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"frontend employee\",\r\n    \"password\" : \"David@12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/auth/signin",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Guest SignIn",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"tilly\",\r\n    \"password\" : \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/auth/signin",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Home page",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiaWF0IjoxNjgwNjY5MzI2LCJleHAiOjE2ODA3NTU3MjZ9.SGSJDJ2cVLdAfR9mbj4JVEtP1JuoumMWvmP5Pv5gNe6zx4tfHqSCnlEv-MT8WREHYoaz-dFTCDi4pA6kGhOGBQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/home/all",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"home",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Feedback",
+			"item": [
+				{
+					"name": "Feedback By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aWxseSIsImlhdCI6MTY4MDc1ODIyNiwiZXhwIjoxNjgwODQ0NjI2fQ.0aIMvGmYTl3zxc67BPelKErxm-IXE2_NgQ1QSJtY2SKd10x1JqJk3eLcRih5gnjPDIvUT2DF3U1kadYh8UUnQw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/feedback/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"feedback",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Feedback",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aWxseSIsImlhdCI6MTY4MTc0NTUxNCwiZXhwIjoxNjgxODMxOTE0fQ.Ag1B0vNrE3McwtSnWi5wdRO_7NA_Q2_7WOp8Z5NVcSckZyI-Md3yGml4RJhCxnKuBZn4g9hfrjJuPg05d-_H6g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ratings\": 9.5,\r\n    \"checkout\": {\r\n        \"billingId\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/feedback",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"feedback"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Feedbacks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MDg0MjI5OSwiZXhwIjoxNjgwOTI4Njk5fQ.6bEazGjLjexe2Ru0VjRUA-_VFsGZRviD7SjE51YYAittuoSVY76VESHRwKWwIJO59W1WHZk89c1LHi_4cWrbyA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/feedback",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"feedback"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reservation",
+			"item": [
+				{
+					"name": "Reservation By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aWxseSIsImlhdCI6MTY4MDc1ODIyNiwiZXhwIjoxNjgwODQ0NjI2fQ.0aIMvGmYTl3zxc67BPelKErxm-IXE2_NgQ1QSJtY2SKd10x1JqJk3eLcRih5gnjPDIvUT2DF3U1kadYh8UUnQw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/reservation/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"reservation",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Reservation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW0iLCJpYXQiOjE2ODE3NDI1OTAsImV4cCI6MTY4MTgyODk5MH0.bIhem1VtTqMm95TCNBhD88GK4KrpjblFLX1D_DlJ0j935yM2J9X9aUJtoicSFpkF9x5UCxg_d54FSIJJGjQ6Qw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"toDate\": \"2023-08-20\",\r\n    \"identityProof\": 65474169,\r\n    \"bookingStatus\": \"booked\",\r\n    \"fromDate\": \"2023-08-14\",\r\n    \"countrycode\": 21,\r\n    \"number\": 3278941578,\r\n    \"houseNumber\": 56,\r\n    \"street\": \"Clifton Road\",\r\n    \"city\": \"New Jersey\",\r\n    \"pincode\": 458967,\r\n    \"discounts\":      {\r\n        \"discountId\": 2,\r\n        \"companyName\": \"Writers Building\",\r\n        \"houseNumber\": 12,\r\n        \"street\": \"Lindsay Street\",\r\n        \"city\": \"Chicago\",\r\n        \"pincode\": 357417,\r\n        \"emailID\": \"writersbuilding@gmail.com\",\r\n        \"countrycode\": \"87\",\r\n        \"number\": 9587265301,\r\n        \"rebate\": 3000.0\r\n    },\r\n    \"user\": {\r\n        \"id\": 5,\r\n        \"username\": \"sam\",\r\n        \"email\": \"sam@gmail.com\"\r\n    },\r\n    \"hotelDetails\": {\r\n        \"hotelId\": 1,\r\n        \"gymAvailable\": true,\r\n        \"swimmingPoolAvailable\": true,\r\n        \"parkingZoneAvailable\": true,\r\n        \"hotelName\": \"ITC Hotel\",\r\n        \"totalRooms\": 200,\r\n        \"roomsAvailable\": 90,\r\n        \"carRentAvailable\": true,\r\n        \"gameZoneAvailable\": true,\r\n        \"laundryAvailable\": true\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/reservation",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"reservation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Reservation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MDg0MTA2OSwiZXhwIjoxNjgwOTI3NDY5fQ.NrheU4uwzvv6_mjVzy9Wihg7jAnmw1R83fONQpN1GOHrSMydmLYYIqvvG0u9spoR8j13OebM53BLj6AHV6FQqw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"toDate\": \"2022-02-20\",\r\n    \"identityProof\": 321456,\r\n    \"bookingStatus\": \"waiting\",\r\n    \"fromDate\": \"2022-02-14\",\r\n    \"countrycode\": 14,\r\n    \"number\": 6214789546,\r\n    \"houseNumber\": 30,\r\n    \"street\": \"West Street\",\r\n    \"city\": \"New Jersey\",\r\n    \"pincode\": 982475,\r\n    \"discounts\": {\r\n        \"discountId\": 1\r\n    },\r\n    \"user\": {\r\n        \"id\": 1\r\n    },\r\n    \"hotelDetails\": {\r\n        \"hotelId\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/reservation/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"reservation",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Reservations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MTc0MzI3OCwiZXhwIjoxNjgxODI5Njc4fQ.U3D6hWN73HAEpAQsXsuHWqBwZN7DwuN23WOGc2PkEHw2TDKqPJxN-ephXv8Jeejlz9C4q_x7OFSjo6VBKag5yw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/reservation",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"reservation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Reservation By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aWxseSIsImlhdCI6MTY4MDc1ODIyNiwiZXhwIjoxNjgwODQ0NjI2fQ.0aIMvGmYTl3zxc67BPelKErxm-IXE2_NgQ1QSJtY2SKd10x1JqJk3eLcRih5gnjPDIvUT2DF3U1kadYh8UUnQw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/reservation/7",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"reservation",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rooms",
+			"item": [
+				{
+					"name": "Rooms By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aWxseSIsImlhdCI6MTY4MDc1ODIyNiwiZXhwIjoxNjgwODQ0NjI2fQ.0aIMvGmYTl3zxc67BPelKErxm-IXE2_NgQ1QSJtY2SKd10x1JqJk3eLcRih5gnjPDIvUT2DF3U1kadYh8UUnQw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/rooms/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"rooms",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Room",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MTc0MzI3OCwiZXhwIjoxNjgxODI5Njc4fQ.U3D6hWN73HAEpAQsXsuHWqBwZN7DwuN23WOGc2PkEHw2TDKqPJxN-ephXv8Jeejlz9C4q_x7OFSjo6VBKag5yw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomNumber\": 400,\r\n    \"roomCharges\": 15000.00,\r\n    \"roomType\": \"Premium Deluxe Suite\",\r\n    \"hotelDetails\": {\r\n        \"hotelId\": 1\r\n    },\r\n    \"reservation\": {\r\n        \"bookingId\" : 2\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/rooms",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"rooms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Room Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MTc0MzI3OCwiZXhwIjoxNjgxODI5Njc4fQ.U3D6hWN73HAEpAQsXsuHWqBwZN7DwuN23WOGc2PkEHw2TDKqPJxN-ephXv8Jeejlz9C4q_x7OFSjo6VBKag5yw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": 2,\r\n    \"roomNumber\": 600,\r\n    \"roomCharges\": 16000.00,\r\n    \"roomType\": \"Deluxe Suite\",\r\n    \"hotelDetails\": {\r\n        \"hotelId\": 2\r\n    },\r\n    \"reservation\": {\r\n        \"bookingId\": 2\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/rooms/2",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"rooms",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Rooms",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MDgwNjE5NywiZXhwIjoxNjgwODkyNTk3fQ.wm575oazkwssIpiwOFchSygl5WPjKXOyZmoOcyy0EJnyeRc00KCp_ewkucc-01eotDkKmYlBgR95oyArmcif3Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/rooms",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"rooms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Room By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aWxseSIsImlhdCI6MTY4MDc1ODIyNiwiZXhwIjoxNjgwODQ0NjI2fQ.0aIMvGmYTl3zxc67BPelKErxm-IXE2_NgQ1QSJtY2SKd10x1JqJk3eLcRih5gnjPDIvUT2DF3U1kadYh8UUnQw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/rooms/2",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"rooms",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Items",
+			"item": [
+				{
+					"name": "Items By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MDgwMzc0NywiZXhwIjoxNjgwODkwMTQ3fQ.WyKVBXbBdHfz54xq9fGU5DsSffAwJ8iMPKYxHWqrziPe-u3ldS0iwAzZHWvx2gNbftHvaMhqnTvmK2d_BWb2yQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/items/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"items",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MTczNzY4NiwiZXhwIjoxNjgxODI0MDg2fQ.Tin9p1MWRwUkdxn5PUdeuh724oIYVU5U0ZFc58V5z-29dwVAdWwNlW-Px6W4z6drHG-c4GbX_rVNXCMkv07QCg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\t\"itemName\": \"Laundry\",\r\n        \"charges\": 600.0\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/items",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Items",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MDgwMzc0NywiZXhwIjoxNjgwODkwMTQ3fQ.WyKVBXbBdHfz54xq9fGU5DsSffAwJ8iMPKYxHWqrziPe-u3ldS0iwAzZHWvx2gNbftHvaMhqnTvmK2d_BWb2yQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"itemName\": \"swimmingpool\",\r\n    \"charges\": 650.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/items/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"items",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Items",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MTczOTIxMiwiZXhwIjoxNjgxODI1NjEyfQ.oZyIEcpuPf0lg4dvJnp3mz4_0nOr-dfSlTk7bnRJM7Vud0UMvgbfhy81IpIzJn9MYTXbHZ525mH6xzL6gg5x0g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/items",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Item By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MDgwMzc0NywiZXhwIjoxNjgwODkwMTQ3fQ.WyKVBXbBdHfz54xq9fGU5DsSffAwJ8iMPKYxHWqrziPe-u3ldS0iwAzZHWvx2gNbftHvaMhqnTvmK2d_BWb2yQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/items/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"items",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Checkout",
+			"item": [
+				{
+					"name": "Bill By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aWxseSIsImlhdCI6MTY4MDc1ODIyNiwiZXhwIjoxNjgwODQ0NjI2fQ.0aIMvGmYTl3zxc67BPelKErxm-IXE2_NgQ1QSJtY2SKd10x1JqJk3eLcRih5gnjPDIvUT2DF3U1kadYh8UUnQw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/checkout/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"checkout",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Bill",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MTc0NTQwNCwiZXhwIjoxNjgxODMxODA0fQ.iQ0Xu7S2G0ise6kTnThfnNwPfLF2pAHdOkeyv4dP6fcUOXj-S0LOmUL7KdyA-L2fg7YkOB3czDF9cTmkOJ1Ffw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"paymentStatus\": \"paid\",\r\n    \"reservation\": {\r\n        \"bookingId\": 2\r\n    },\r\n    \"items\": [\r\n        {\r\n            \"itemId\": 1\r\n        },\r\n        {\r\n            \"itemId\": 2\r\n        },\r\n        {\r\n            \"itemId\": 3\r\n        },\r\n        {\r\n            \"itemId\": 4\r\n        },\r\n        {\r\n            \"itemId\": 5\r\n        }\r\n    ],\r\n    \"gst\": 6700.0,\r\n    \"totalCharges\": 45000.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/checkout",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Bill Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aWxseSIsImlhdCI6MTY4MDc1ODIyNiwiZXhwIjoxNjgwODQ0NjI2fQ.0aIMvGmYTl3zxc67BPelKErxm-IXE2_NgQ1QSJtY2SKd10x1JqJk3eLcRih5gnjPDIvUT2DF3U1kadYh8UUnQw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"paymentStatus\": \"paid\",\r\n    \"reservation\": {\r\n        \"bookingId\": 1\r\n    },\r\n    \"totalCharges\": 20000.00,\r\n    \"gst\": 5000.00,\r\n    \"items\" : [{}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/checkout/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"checkout",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Bills",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MDg0MjI5OSwiZXhwIjoxNjgwOTI4Njk5fQ.6bEazGjLjexe2Ru0VjRUA-_VFsGZRviD7SjE51YYAittuoSVY76VESHRwKWwIJO59W1WHZk89c1LHi_4cWrbyA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/checkout",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Bill By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aWxseSIsImlhdCI6MTY4MDc1ODIyNiwiZXhwIjoxNjgwODQ0NjI2fQ.0aIMvGmYTl3zxc67BPelKErxm-IXE2_NgQ1QSJtY2SKd10x1JqJk3eLcRih5gnjPDIvUT2DF3U1kadYh8UUnQw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/checkout/7",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"checkout",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Location",
+			"item": [
+				{
+					"name": "Add new Location",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MTczNzQ4MSwiZXhwIjoxNjgxODIzODgxfQ.6WSueJ0a5wmsVH1CJQw0bb5Sj8hW9q2wx__C5cV1N_yCXt_vHO_F5x2N4qrLm3e1IbECVyyKSgr28lmMTilXcg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"locationName\": \"Japan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/hm/location",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"hm",
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Location by Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aWxseSIsImlhdCI6MTY4MDc1ODIyNiwiZXhwIjoxNjgwODQ0NjI2fQ.0aIMvGmYTl3zxc67BPelKErxm-IXE2_NgQ1QSJtY2SKd10x1JqJk3eLcRih5gnjPDIvUT2DF3U1kadYh8UUnQw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/location/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"location",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Locations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MTczNzQ4MSwiZXhwIjoxNjgxODIzODgxfQ.6WSueJ0a5wmsVH1CJQw0bb5Sj8hW9q2wx__C5cV1N_yCXt_vHO_F5x2N4qrLm3e1IbECVyyKSgr28lmMTilXcg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/hm/location",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"hm",
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Location By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aWxseSIsImlhdCI6MTY4MDc1ODIyNiwiZXhwIjoxNjgwODQ0NjI2fQ.0aIMvGmYTl3zxc67BPelKErxm-IXE2_NgQ1QSJtY2SKd10x1JqJk3eLcRih5gnjPDIvUT2DF3U1kadYh8UUnQw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/location/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"location",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hotel",
+			"item": [
+				{
+					"name": "Add new Hotel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MTc0MDA4NywiZXhwIjoxNjgxODI2NDg3fQ.QsbF-qQXBKIy-0Ih19EHlkUecsTO4jhVBkRxBnzuQUOz_b4oKik-4XX61jKugIikN2mZ27aSMWryeD82YPwz1w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"gymAvailable\": false,\r\n    \"swimmingPoolAvailable\": false,\r\n    \"parkingZoneAvailable\": true,\r\n    \"totalRooms\":300,\r\n    \"roomsAvailable\": 20,\r\n    \"carRentAvailable\": true,\r\n    \"gameZoneAvailable\": false,\r\n    \"laundryAvailable\": true,\r\n    \"hotelName\": \"City Hotel\",\r\n    \"location\": {\r\n        \"locationId\": 4,\r\n        \"locationName\": \"Japan\"\r\n    },\r\n    \"discounts\": [\r\n    {\r\n        \"discountId\": 6,\r\n        \"companyName\": \"BelleVue Enterprise\",\r\n        \"houseNumber\": 74,\r\n        \"street\": \"Corporate Park\",\r\n        \"city\": \"Cork\",\r\n        \"pincode\": 354178,\r\n        \"emailID\": \"bellevueenenterprise@gmail.com\",\r\n        \"countrycode\": \"14\",\r\n        \"number\": 6475124789,\r\n        \"rebate\": 2000.0\r\n    },\r\n    {\r\n        \"discountId\": 7,\r\n        \"companyName\": \"Sydney Readers Block\",\r\n        \"houseNumber\": 65,\r\n        \"street\": \"Main Road\",\r\n        \"city\": \"Vietnam\",\r\n        \"pincode\": 247156,\r\n        \"emailID\": \"sydneyreadersblock@gmail.com\",\r\n        \"countrycode\": \"30\",\r\n        \"number\": 4759321852,\r\n        \"rebate\": 5000.0\r\n    }\r\n    ],\r\n    \"hotelItems\": [\r\n        {\r\n            \"itemId\": 3,\r\n            \"itemName\": \"Car Rent\",\r\n            \"charges\": 3000.0\r\n        },\r\n        {\r\n            \"itemId\": 4,\r\n            \"itemName\": \"Parking Zone\",\r\n            \"charges\": 800.0\r\n        },\r\n        {\r\n            \"itemId\": 6,\r\n            \"itemName\": \"Laundry\",\r\n            \"charges\": 600.0\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/hm/hotel",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"hm",
+								"hotel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hotel by Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aWxseSIsImlhdCI6MTY4MDc1ODIyNiwiZXhwIjoxNjgwODQ0NjI2fQ.0aIMvGmYTl3zxc67BPelKErxm-IXE2_NgQ1QSJtY2SKd10x1JqJk3eLcRih5gnjPDIvUT2DF3U1kadYh8UUnQw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/hotel/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"hotel",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Hotel Details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MTc0MzI3OCwiZXhwIjoxNjgxODI5Njc4fQ.U3D6hWN73HAEpAQsXsuHWqBwZN7DwuN23WOGc2PkEHw2TDKqPJxN-ephXv8Jeejlz9C4q_x7OFSjo6VBKag5yw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/hotel",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"hotel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Hotel By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MDgwNjE5NywiZXhwIjoxNjgwODkyNTk3fQ.wm575oazkwssIpiwOFchSygl5WPjKXOyZmoOcyy0EJnyeRc00KCp_ewkucc-01eotDkKmYlBgR95oyArmcif3Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/hotel/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"hotel",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Hotel Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MDgwNjE5NywiZXhwIjoxNjgwODkyNTk3fQ.wm575oazkwssIpiwOFchSygl5WPjKXOyZmoOcyy0EJnyeRc00KCp_ewkucc-01eotDkKmYlBgR95oyArmcif3Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"gymAvailable\": true,\r\n    \"swimmingPoolAvailable\": false,\r\n    \"parkingZoneAvailable\": true,\r\n    \"totalRooms\": 200,\r\n    \"roomsAvailable\": 90,\r\n    \"carRentAvailable\": true,\r\n    \"gameZoneAvailable\": false,\r\n    \"laundryAvailable\": true,\r\n    \"hotelName\": \"ITC Hotel\",\r\n    \"location\": {\r\n        \"locationId\": 1,\r\n        \"locationName\": \r\n    },\r\n    \"discounts\": [\r\n        {\r\n            \"discountId\":1\r\n        }\r\n    ],\r\n    \"hotelItems\" :[{\r\n        \"itemId\":4\r\n    },\r\n    {\r\n        \"itemId\": 2\r\n    },\r\n    {\r\n        \"itemId\": 5\r\n    },\r\n    {\r\n        \"itemId\":6\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/hotel/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"hotel",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Discounts",
+			"item": [
+				{
+					"name": "Add new Discount",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MTczOTIxMiwiZXhwIjoxNjgxODI1NjEyfQ.oZyIEcpuPf0lg4dvJnp3mz4_0nOr-dfSlTk7bnRJM7Vud0UMvgbfhy81IpIzJn9MYTXbHZ525mH6xzL6gg5x0g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"companyName\": \"Sydney Readers Block\",\r\n    \"houseNumber\": 65,\r\n    \"street\": \"Main Road\",\r\n    \"city\": \"Vietnam\",\r\n    \"pincode\": 247156,\r\n    \"emailID\": \"sydneyreadersblock@gmail.com\",\r\n    \"number\": 4759321852,\r\n    \"countrycode\": \"30\",\r\n    \"rebate\": 5000.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/hm/discount",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"hm",
+								"discount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Discount by Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aWxseSIsImlhdCI6MTY4MDc1ODIyNiwiZXhwIjoxNjgwODQ0NjI2fQ.0aIMvGmYTl3zxc67BPelKErxm-IXE2_NgQ1QSJtY2SKd10x1JqJk3eLcRih5gnjPDIvUT2DF3U1kadYh8UUnQw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/discount/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"discount",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Discount Details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MTc0MDA4NywiZXhwIjoxNjgxODI2NDg3fQ.QsbF-qQXBKIy-0Ih19EHlkUecsTO4jhVBkRxBnzuQUOz_b4oKik-4XX61jKugIikN2mZ27aSMWryeD82YPwz1w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/api/hm/discount",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"hm",
+								"discount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Discount By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aWxseSIsImlhdCI6MTY4MDc1ODIyNiwiZXhwIjoxNjgwODQ0NjI2fQ.0aIMvGmYTl3zxc67BPelKErxm-IXE2_NgQ1QSJtY2SKd10x1JqJk3eLcRih5gnjPDIvUT2DF3U1kadYh8UUnQw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/discount/3",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"discount",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Discount Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4MDgwNTUwMywiZXhwIjoxNjgwODkxOTAzfQ.iR9Gctkq9Yh9M6KZCjDGxdda2yzlhTwVNnoOx7yUSq2EDij9NxZkdiyNmGXzvkHQ3WA0lySTCCjGP4yXGoi69Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"discountId\": 1,\r\n    \"companyName\": \"Phillip Associates\",\r\n    \"houseNumber\": 24,\r\n    \"street\": \"Park Street\",\r\n    \"city\": \"Canada\",\r\n    \"pincode\": 354178,\r\n    \"emailID\": \"phillipassociates@gmail.com\",\r\n    \"number\": 9475124789,\r\n    \"countrycode\": \"29\",\r\n    \"rebate\": 6500.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}{{base_api}}/discount/1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_api}}",
+							"path": [
+								"discount",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}

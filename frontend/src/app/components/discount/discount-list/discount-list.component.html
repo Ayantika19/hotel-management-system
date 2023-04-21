@@ -1,0 +1,37 @@
+<div class="discount">
+<div class="list-row">
+    <div class="col-md-6">
+        <h4>Discounts List</h4>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let d of discount let i = index" [class.active]="i == currentIndex"
+                (click)="setActiveDiscount(d, i)">
+                {{ d.companyName }}
+            </li>
+        </ul>
+        <a class="btn btn-success" routerLink="/add-discount">
+            Add Corporate Discount
+        </a>
+    </div>
+</div>
+<div class="list">
+    <div class="col-md-6">
+        <div *ngIf="currentDiscount">
+            <h4>Discount Details</h4>
+            <div>
+                <label><strong>Company Name :</strong></label> {{ currentDiscount.companyName }}
+            </div>
+            <div>
+                <label><strong>Company EmailId :</strong></label>
+                {{ currentDiscount.emailID }}
+            </div>
+            <div *ngIf="currentDiscount">
+                <a class="btn btn-warning" routerLink="/discount/{{ currentDiscount.discountId }}">
+                    Edit
+                </a>
+                <a class="btn btn-danger" routerLink="/discount/{{ currentDiscount.discountId }}">
+                    Delete
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

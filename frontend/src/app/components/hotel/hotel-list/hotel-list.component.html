@@ -1,0 +1,21 @@
+<div class="list-row">
+    <div class="col-md-6">
+        <h4>Hotels List</h4>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let h of hotel let i = index" [class.active]="i == currentIndex"
+                (click)="setActiveHotel(h, i)">
+                {{ h.hotelName }}
+            </li>
+        </ul>
+        <div *ngIf="currentHotel">
+            <h4>Hotel Details</h4>
+            <div>
+                <label><strong>Hotel Name :</strong></label> {{ currentHotel.hotelName }}
+            </div>
+            <div>
+                <label><strong>Location :</strong></label>
+                {{ currentHotel.location.locationName }}
+            </div>
+        </div>
+    </div>
+</div>

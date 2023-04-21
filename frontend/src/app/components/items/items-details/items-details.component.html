@@ -1,0 +1,17 @@
+<div>
+    <div *ngIf="currentItem.itemId" class="edit-form">
+      <form>
+        <div class="form-group">
+          <label for="itemName">Item Name</label>
+          <input type="text" class="form-control" id="itemName" [(ngModel)]="currentItem.itemName"
+            name="itemName" />
+        </div>
+      </form>
+      <a class="btn btn-danger" (click)="deleteItem()">
+        Delete
+      </a>
+      <a class="btn btn-success" routerLink="/items">
+        All Items
+      </a>
+    </div>
+  </div>

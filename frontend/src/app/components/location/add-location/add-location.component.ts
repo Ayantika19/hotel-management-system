@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from 'src/app/models/location/location.model';
-import { LocationService } from 'src/app/services/location/location.service';
+import { LocationService } from 'src/app/_services/location/location.service';
 
 @Component({
   selector: 'app-add-location',
@@ -9,7 +9,7 @@ import { LocationService } from 'src/app/services/location/location.service';
 })
 export class AddLocationComponent implements OnInit {
   location: Location = {
-    locationname: '',
+    locationName: '',
   };
   submitted = false;
 
@@ -20,7 +20,7 @@ export class AddLocationComponent implements OnInit {
 
   saveLocation(): void {
     const data = {
-      locationname: this.location.locationname
+      locationName: this.location.locationName
     };
 
     this.locationService.create(data)
@@ -37,7 +37,7 @@ export class AddLocationComponent implements OnInit {
   newLocation(): void {
     this.submitted = false;
     this.location = {
-      locationname: ''
+      locationName: ''
     };
   }
 

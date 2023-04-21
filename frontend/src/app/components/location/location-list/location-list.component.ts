@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from 'src/app/models/location/location.model';
-import { LocationService } from 'src/app/services/location/location.service';
+import { LocationService } from 'src/app/_services/location/location.service';
 
 @Component({
   selector: 'app-location-list',
@@ -11,7 +11,6 @@ export class LocationListComponent implements OnInit {
   location?: Location[];
   currentLocation?: Location;
   currentIndex = -1;
-//   title = '';
 
   constructor(private locationService: LocationService) { }
 
@@ -41,32 +40,5 @@ export class LocationListComponent implements OnInit {
     this.currentLocation = locations;
     this.currentIndex = index;
   }
-
-//   removeAllLocations(): void {
-//     this.locationService.deleteAll()
-//       .subscribe(
-//         response => {
-//           console.log(response);
-//           this.refreshList();
-//         },
-//         error => {
-//           console.log(error);
-//         });
-//   }
-
-//   searchTitle(): void {
-//     this.currentLocation = undefined;
-//     this.currentIndex = -1;
-
-//     this.locationService.findByTitle(this.title)
-//       .subscribe(
-//         data => {
-//           this.location = data;
-//           console.log(data);
-//         },
-//         error => {
-//           console.log(error);
-//         });
-//   }
-
 }
+

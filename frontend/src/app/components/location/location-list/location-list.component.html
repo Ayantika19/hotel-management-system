@@ -1,58 +1,17 @@
-<div class="list row">
-  <!-- <div class="col-md-8">
-    <div class="input-group mb-3">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Search by id"
-        [(ngModel)]="id"
-      />
-      <div class="input-group-append">
-        <button
-          class="btn btn-outline-secondary"
-          type="button"
-          (click)="searchTitle()"
-        >
-          Search
-        </button>
-      </div>
-    </div>
-  </div> -->
+<div class="list-row">
   <div class="col-md-6">
     <h4>Locations List</h4>
     <ul class="list-group">
-      <li
-        class="list-group-item"setActiveLocation
-        *ngFor="let l of location; let i = index"
-        [class.active]="i == currentIndex"
-        (click)="setActiveLocation(l, i)"
-      >
-        {{ l.id }}
+      <li class="list-group-item" *ngFor="let l of location let i = index" [class.active]="i == currentIndex"
+        (click)="setActiveLocation(l, i)">
+        {{ l.locationName }}
       </li>
     </ul>
-<!-- 
-    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllLocations()">
-      Remove All
-    </button> -->
-  </div>
-  <div class="col-md-6">
+    <a class="btn btn-success" routerLink="/add-location">
+      Add Location
+    </a>
     <div *ngIf="currentLocation">
-      <h4>Location</h4>
-      <div>
-        <label><strong>Location Id:</strong></label> {{ currentLocation.id }}
-      </div>
-      <div>
-        <label><strong>Location Name:</strong></label>
-        {{ currentLocation.locationname }}
-      </div>
-      <a class="badge badge-warning" routerLink="/location/update/{ currentLocation.id }}">
-        Edit
-      </a>
-    </div>
-
-    <div *ngIf="!currentLocation">
-      <br />
-      <p>Please click on a Location...</p>
+      <a class="btn btn-warning" routerLink="/location/{{ currentLocation.locationId }}"> Delete</a>
     </div>
   </div>
 </div>

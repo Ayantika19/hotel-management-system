@@ -1,9 +1,9 @@
 {
   "name": "hotel-management-system",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

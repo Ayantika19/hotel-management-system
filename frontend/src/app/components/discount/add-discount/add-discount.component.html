@@ -1,0 +1,52 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="companyName"><strong>Company Name</strong></label>
+        <input class="form-control" id="companyName" required [(ngModel)]="discount.companyName" name="companyName" />
+      </div>
+      <div class="form-group">
+        <label for="houseNumber"><strong>House Number</strong></label>
+        <input class="form-control" id="houseNumber" required [(ngModel)]="discount.houseNumber" name="houseNumber" />
+      </div>
+      <div class="form-group">
+        <label for="street"><strong>Street</strong></label>
+        <input class="form-control" id="street" required [(ngModel)]="discount.street" name="street" />
+      </div>
+      <div class="form-group">
+        <label for="city"><strong>City</strong></label>
+        <input class="form-control" id="city" required [(ngModel)]="discount.city" name="city" />
+      </div>
+      <div class="form-group">
+        <label for="pincode"><strong>Pincode</strong></label>
+        <input class="form-control" id="pincode" required [(ngModel)]="discount.pincode" name="pincode" />
+      </div>
+      <div class="form-group">
+        <label for="emailID"><strong>EmailId</strong></label>
+        <input class="form-control" id="emailID" required [(ngModel)]="discount.emailID" name="emailID" />
+      </div>
+      <div class="form-group">
+        <label for="countrycode"><strong>Country Code</strong></label>
+        <input class="form-control" id="countrycode" required [(ngModel)]="discount.countrycode" name="countrycode" />
+      </div>
+      <div class="form-group">
+        <label for="number"><strong>Contact Number</strong></label>
+        <input class="form-control" id="number" required [(ngModel)]="discount.number" name="number" />
+      </div>
+      <div class="form-group">
+        <label for="rebate"><strong>Rebate</strong></label>
+        <input class="form-control" id="rebate" required [(ngModel)]="discount.rebate" name="rebate" />
+      </div>
+
+      <button (click)="saveDiscount()" class="btn btn-success">Submit</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Discount was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newDiscount()">Add</button>
+      <a class="btn btn-warning" routerLink="/discount">
+        All Corporate Discounts
+      </a>
+    </div>
+  </div>
+</div>

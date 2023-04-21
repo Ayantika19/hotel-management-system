@@ -1,65 +1,17 @@
 <div>
-  <div *ngIf="currentLocation.id" class="edit-form">
-    <h4>Location</h4>
+  <div *ngIf="currentLocation.locationId" class="edit-form">
     <form>
-      <!-- <div class="form-group">
-        <label for="title">Title</label>
-        <input
-          type="text"
-          class="form-control"
-          id="title"
-          [(ngModel)]="currentLocation.title"
-          name="title"
-        />
-      </div> -->
       <div class="form-group">
-        <label for="locationname">Location Name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="locationname"
-          [(ngModel)]="currentLocation.locationname"
-          name="locationname"
-        />
+        <label for="locationName">Location Name</label>
+        <input type="text" class="form-control" id="locationName" [(ngModel)]="currentLocation.locationName"
+          name="locationName" />
       </div>
-
-      <!-- <div class="form-group">
-        <label><strong>Status:</strong></label>
-        {{ currentLocation.published ? "Published" : "Pending" }}
-      </div> -->
     </form>
-
-    <!-- <button
-      class="badge badge-primary mr-2"
-      *ngIf="currentLocation.published"
-      (click)="updatePublished(false)"
-    >
-      UnPublish
-    </button> -->
-    <!-- <button
-      *ngIf="!currentLocation.published"
-      class="badge badge-primary mr-2"
-      (click)="updatePublished(true)"
-    >
-      Publish
-    </button> -->
-
-    <!-- <button class="badge badge-danger mr-2" (click)="deleteLocation()">
+    <a class="btn btn-danger" (click)="deleteLocation()">
       Delete
-    </button>
-
-    <button
-      type="submit"
-      class="badge badge-success mb-2"
-      (click)="updateLocation()"
-    >
-      Update
-    </button>
-    <p>{{ message }}</p>
-  </div> -->
-
-  <div *ngIf="!currentLocation.id">
-    <br />
-    <p>Cannot access this Location...</p>
+    </a>
+    <a class="btn btn-success" routerLink="/location">
+      All Locations
+    </a>
   </div>
 </div>

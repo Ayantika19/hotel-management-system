@@ -1,0 +1,28 @@
+.list-row {
+    width: 500px;
+    margin-left: 500px;
+    vertical-align: middle;
+    margin-top: 200px;
+}
+
+.list-group a {
+    background-color: #eee;
+    color: black;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.list-group a:hover {
+    background-color: #ccc;
+}
+
+.list-group a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+.list {
+    width: 1000px;
+    margin-left: 500px;
+    vertical-align: middle;
+}
