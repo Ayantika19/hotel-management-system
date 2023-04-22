@@ -24,10 +24,7 @@
         {{ currentItem.charges }}
       </div>
       <div *ngIf="currentItem"> 
-        <a class="btn btn-warning" routerLink="/discount/{{ currentItem.itemId }}">
-          Edit
-        </a>
-        <a class="btn btn-danger" routerLink="/item/{{ currentItem.itemId }}">
+        <a class="btn btn-danger" routerLink="/items/{{ currentItem.itemId }}">
           Delete
         </a>
       </div>
