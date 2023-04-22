@@ -2,11 +2,11 @@
     <div class="submit-form">
         <div *ngIf="!submitted">
             <div class="form-group">
-                <label for="itemName">Item Name</label>
+                <label for="itemName"><strong>Item Name</strong></label>
                 <input class="form-control" id="itemName" required [(ngModel)]="item.itemName" name="itemName" />
             </div>
             <div class="form-group">
-                <label for="charges">Charges</label>
+                <label for="charges"><strong>Charges</strong></label>
                 <input class="form-control" id="charges" required [(ngModel)]="item.charges" name="charges" />
             </div>
             <button (click)="saveItems()" class="btn btn-success">Submit</button>
