@@ -31,12 +31,4 @@ export class ItemsService {
   delete(itemId: any): Observable<any> {
     return this.http.delete(`${baseUrl}/${itemId}`);
   }
-
-  // deleteAll(): Observable<any> {
-  //   return this.http.delete(baseUrl);
-  // }
-
-  // findByTitle(title: any): Observable<Location[]> {
-  //   return this.http.get<Location[]>(`${baseUrl}?title=${title}`);
-  // }
 }
