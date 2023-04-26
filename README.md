@@ -1,4 +1,4 @@
-# hotel_management_system
+# Hotel Management System
 
 # Steps to build the application :
 
